@@ -1,0 +1,164 @@
+---
+title: "2. Create a price"
+description: "Let's now create a Price for the Product you previously created."
+---
+
+## Create a Price
+
+<Note>Don't forget to replace `<YOUR_SECRET_KEY_HERE>` with your [API Secret Key](/v2/api-keys "API Secret Key")</Note>
+
+<Tip>
+   For more details about the Price Create endpoint, refer to its [API
+   Reference.](/v2/api-reference/prices/create "API Reference.")
+</Tip>
+
+<CodeGroup>
+
+```curl cURL
+curl --request POST \
+  --url https://pay.chargily.net/test/api/v2/prices \
+  --header 'Authorization: Bearer <YOUR_SECRET_KEY_HERE>' \
+  --header 'Content-Type: application/json' \
+  --data '{
+  "amount": 5000,
+  "currency": "dzd",
+  "product_id": "01hhyjnrdbc1xhgmd34hs1v3en"
+}'
+```
+
+```python Python
+import requests
+
+url = "https://pay.chargily.net/test/api/v2/prices"
+
+payload = {
+    "amount": 5000,
+    "currency": "dzd",
+    "product_id": "01hhyjnrdbc1xhgmd34hs1v3en"
+}
+headers = {
+    "Authorization": "Bearer <YOUR_SECRET_KEY_HERE>",
+    "Content-Type": "application/json"
+}
+
+response = requests.request("POST", url, json=payload, headers=headers)
+
+print(response.text)
+```
+
+```javascript JavaScript
+const options = {
+   method: "POST",
+   headers: {
+      Authorization: "Bearer <YOUR_SECRET_KEY_HERE>",
+      "Content-Type": "application/json",
+   },
+   body: '{"amount":5000,"currency":"dzd","product_id":"01hhyjnrdbc1xhgmd34hs1v3en"}',
+};
+
+fetch("https://pay.chargily.net/test/api/v2/prices", options)
+   .then((response) => response.json())
+   .then((response) => console.log(response))
+   .catch((err) => console.error(err));
+```
+
+```php PHP
+<?php
+
+$curl = curl_init();
+
+curl_setopt_array($curl, [
+  CURLOPT_URL => "https://pay.chargily.net/test/api/v2/prices",
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => "",
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 30,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => "POST",
+  CURLOPT_POSTFIELDS => "{\n  \"amount\": 5000,\n  \"currency\": \"dzd\",\n  \"product_id\": \"01hhyjnrdbc1xhgmd34hs1v3en\"\n}",
+  CURLOPT_HTTPHEADER => [
+    "Authorization: Bearer <YOUR_SECRET_KEY_HERE>",
+    "Content-Type: application/json"
+  ],
+]);
+
+$response = curl_exec($curl);
+$err = curl_error($curl);
+
+curl_close($curl);
+
+if ($err) {
+  echo "cURL Error #:" . $err;
+} else {
+  echo $response;
+}
+```
+
+```go GO
+package main
+
+import (
+	"fmt"
+	"strings"
+	"net/http"
+	"io/ioutil"
+)
+
+func main() {
+
+	url := "https://pay.chargily.net/test/api/v2/prices"
+
+	payload := strings.NewReader("{\n  \"amount\": 5000,\n  \"currency\": \"dzd\",\n  \"product_id\": \"01hhyjnrdbc1xhgmd34hs1v3en\"\n}")
+
+	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("Authorization", "Bearer <YOUR_SECRET_KEY_HERE>")
+	req.Header.Add("Content-Type", "application/json")
+
+	res, _ := http.DefaultClient.Do(req)
+
+	defer res.Body.Close()
+	body, _ := ioutil.ReadAll(res.Body)
+
+	fmt.Println(res)
+	fmt.Println(string(body))
+
+}
+```
+
+```java Java
+HttpResponse<String> response = Unirest.post("https://pay.chargily.net/test/api/v2/prices")
+  .header("Authorization", "Bearer <YOUR_SECRET_KEY_HERE>")
+  .header("Content-Type", "application/json")
+  .body("{\n  \"amount\": 5000,\n  \"currency\": \"dzd\",\n  \"product_id\": \"01hhyjnrdbc1xhgmd34hs1v3en\"\n}")
+  .asString();
+```
+
+</CodeGroup>
+
+## Response
+
+If everything worked, you should get a response like this:
+
+```json json
+{
+   "id": "01hhy57e5j3xzce7ama8gtk7m0",
+   "entity": "price",
+   "livemode": false,
+   "amount": 5000,
+   "currency": "dzd",
+   "metadata": null,
+   "created_at": 1702892910,
+   "updated_at": 1702892910,
+   "product_id": "01hhyjnrdbc1xhgmd34hs1v3en"
+}
+```
+Which is the [Price](/v2/api-reference/prices/price-object "Price") object you just created.  
+
+## Next
+
+Now that you have a Price, you can use it to create a [Checkout](/v2/api-reference/checkouts/checkout-object "Checkout") for your customers to pay.
+
+<Card title="Create a Checkout" icon="credit-card" href="/v2/create-a-checkout">
+  You can now create a Checkout using the Price you just created.
+</Card>

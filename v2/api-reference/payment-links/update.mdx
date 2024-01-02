@@ -1,0 +1,76 @@
+---
+title: 'Update a Payment Link'
+description: 'Updates the information of a payment link by defining the values for the passed parameters. Any parameters not supplied will remain unaltered.'
+api: 'POST /payment-links/{id}'
+---
+
+## Path parameters
+
+<ParamField path="id" type="string">
+  The ID of the payment link.
+</ParamField>
+
+## Body parameters
+
+<ParamField body="name" type="string">
+   A String representing the name of the payment link, it will not be shown to
+   customers, it helps you to organize payment links.
+</ParamField>
+
+<ParamField body="items" type="array" multiple>
+   The items are the products that are being sold.
+
+    <Expandable title="items">
+        <ParamField body="price" type="string" required>
+        The ID of the [Price](/v2/api-reference/prices/price-object "Price").
+        </ParamField>
+
+        <ParamField body="quantity" type="integer" required>
+        </ParamField>
+
+        <ParamField body="adjustable_quantity" type="boolean" default="false">
+        </ParamField>
+    </Expandable>
+</ParamField>
+
+<ParamField body="after_completion_message" type="string">
+   A message which will be displayed to the customer after a successful payment.
+</ParamField>
+
+<ParamField body="locale" type="string">
+   The language of the checkout page, accepted values are: 'ar', 'en' or 'fr'.
+</ParamField>
+
+<ParamField body="pass_fees_to_customer" type="boolean">
+   A Boolean value indicating whether the Chargily Pay fees will be paid by you,
+   the merchant, or by your customers.
+</ParamField>
+
+<ParamField body="metadata" type="key-value array">
+   A Set of key-value pairs that can be used to store additional information
+   about the payment link.
+</ParamField>
+
+## Returns
+
+If the update is successful, it returns a payment link object with the updated information.
+
+<ResponseExample>
+
+```json Response
+{
+   "id": "01hhhtvg4w7gk4mcaxmgzb2ynw",
+   "entity": "payment_link",
+   "livemode": false,
+   "name": "Payment Link for Facebook page.",
+   "active": 1,
+   "after_completion_message": "The product will arrive in 03 days.",
+   "locale": "ar",
+   "pass_fees_to_customer": false,
+   "metadata": [],
+   "created_at": 1702479380,
+   "updated_at": 1702479380,
+   "url": "https://pay.chargily.dz/test/payment-links/01hhhtvg4w7gk4mcaxmgzb2ynw"
+}
+```
+</ResponseExample>

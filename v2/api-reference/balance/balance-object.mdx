@@ -1,0 +1,68 @@
+---
+title: 'The Balance object'
+description: This object represents your Chargily Pay balance. You can retrieve it to see the balance of your 03 wallets (DZD, USD and EUR).
+---
+
+## Attributes
+
+<ResponseField name="entity" type="string">
+  A String representing the type of the object.
+</ResponseField>
+
+<ResponseField name="livemode" type="boolean">
+  A "True" value means the request was made in Live Mode, while "False" indicates Test Mode.
+</ResponseField>
+
+<ResponseField name="wallets" type="array of objects">
+  An array of available balances for each currency.
+  
+   <Expandable title="properties">
+    <ResponseField name="wallets.currency" type="string">
+      A lowercase ISO currency code.
+    </ResponseField>
+
+    <ResponseField name="wallets.balance" type="boolean">
+      Whether the user is over 21 years old
+    </ResponseField>
+
+    <ResponseField name="wallets.ready_for_payout" type="boolean">
+      Whether the user is over 21 years old
+    </ResponseField>
+
+    <ResponseField name="wallets.on_hold" type="boolean">
+      Whether the user is over 21 years old
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+
+<ResponseExample>
+
+```json The Balance Object
+{
+    "entity": "balance",
+    "livemode": false,
+    "wallets": [
+        {
+            "currency": "dzd",
+            "balance": 50000,
+            "ready_for_payout": "40000",
+            "on_hold": 10000
+        },
+        {
+            "currency": "usd",
+            "balance": 2000,
+            "ready_for_payout": "1800",
+            "on_hold": 200
+        },
+        {
+            "currency": "eur",
+            "balance": 500,
+            "ready_for_payout": "250",
+            "on_hold": 250
+        }
+    ]
+}
+```
+
+</ResponseExample>

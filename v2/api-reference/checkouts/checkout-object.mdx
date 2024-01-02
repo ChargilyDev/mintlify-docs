@@ -1,0 +1,117 @@
+---
+title: "The Checkout object"
+description: "A Checkout is used to make your customers make a payment. Each time your customer wants to pay, you have to create a new Checkout."
+---
+
+## Attributes
+
+<ResponseField name="id" type="string">
+   The unique identifier of the checkout.
+</ResponseField>
+
+<ResponseField name="entity" type="string">
+   A String representing the type of the object.
+</ResponseField>
+
+<ResponseField name="livemode" type="boolean">
+   A "True" value means the request was made in Live Mode, while "False"
+   indicates Test Mode.
+</ResponseField>
+
+<ResponseField name="amount" type="integer">
+   The total of all the items in the checkout.
+</ResponseField>
+
+<ResponseField name="fees" type="integer">
+   The fees of the checkout.
+</ResponseField>
+
+<ResponseField name="pass_fees_to_customer" type="boolean">
+   A Boolean value indicating whether the Chargily Pay fees will be paid by you,
+   the merchant, or by your customers.
+</ResponseField>
+
+<ResponseField name="status" type="string">
+   The current status of the checkout. Can be one of
+   "pending","processing","paid","failed" or"canceled",
+</ResponseField>
+
+<ResponseField name="locale" type="string">
+   The language of the checkout page, accepted values are: 'ar', 'en' or 'fr'.
+</ResponseField>
+
+<ResponseField name="description" type="string">
+   A description of the checkout. You can use this field to save a note about
+   the checkout.
+</ResponseField>
+
+<ResponseField name="success_url" type="string">
+   The URL where your customer will be redirected after a successful payment.
+</ResponseField>
+
+<ResponseField name="failure_url" type="string">
+   The URL where your customer will be redirected after a failed or canceled
+   payment.
+</ResponseField>
+
+<ResponseField name="payment_method" type="nullable, string">
+   The payment method used to make the payment.
+</ResponseField>
+
+<ResponseField name="invoice_id" type="nullable, string">
+   The unique identifier (ID) of the invoice that was paid.
+</ResponseField>
+
+<ResponseField name="customer_id" type="nullable, string">
+   The ID of an existing [Customer](/v2/api-reference/customers/customer-object "Customer").
+</ResponseField>
+
+<ResponseField name="payment_link_id" type="nullable, string">
+   The unique identifier (ID) of the payment link. In case the checkout was
+   created using a payment link.
+</ResponseField>
+
+<ResponseField name="metadata" type="dictionary">
+   A Set of key-value pairs that can be used to store additional information
+   about the checkout.
+</ResponseField>
+
+<ResponseField name="created_at" type="timestamp">
+   Timestamp indicating when the checkout was created.
+</ResponseField>
+
+<ResponseField name="updated_at" type="timestamp">
+   Timestamp indicating when the last time the checkout was updated (edited).
+</ResponseField>
+
+<ResponseField name="url" type="string">
+   The URL where your customer will be redirected to make the payment.
+</ResponseField>
+
+<ResponseExample>
+
+```json The Checkout Object
+{
+   "id": "01hj5n7cqpaf0mt2d0xx85tgz8",
+   "entity": "checkout",
+   "livemode": false,
+   "amount": 2500,
+   "fees": 0,
+   "pass_fees_to_customer": 0,
+   "status": "pending",
+   "locale": "en",
+   "description": null,
+   "metadata": null,
+   "success_url": "https://my-app.com/payments/success",
+   "failure_url": "https://my-app.com/payments/failure",
+   "payment_method": null,
+   "invoice_id": null,
+   "customer_id": "01hj150206g0jxnh5r2yvvdrna",
+   "payment_link_id": null,
+   "created_at": 1703144567,
+   "updated_at": 1703144567,
+   "url": "https://pay.chargily.dz/test/checkouts/01hj5n7cqpaf0mt2d0xx85tgz8/pay",
+}
+```
+
+</ResponseExample>

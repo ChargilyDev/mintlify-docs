@@ -1,0 +1,50 @@
+---
+title: 'Update a Product'
+description: 'Updates the information of a product by defining the values for the passed parameters. Any parameters not supplied will remain unaltered.'
+api: 'POST /products/{id}'
+---
+
+## Path parameters
+
+<ParamField path="id" type="string">
+  The ID of the product.
+</ParamField>
+
+## Body parameters
+
+<ParamField body="name" type="string">
+The name of the product.
+</ParamField>
+
+<ParamField body="description" type="string">
+The description of the product.
+</ParamField>
+
+<ParamField body="images" type="string[]">
+The images of the product.
+</ParamField>
+
+<ParamField body="metadata" type="key-value array">
+A Set of key-value pairs that can be used to store additional information about the product.
+</ParamField>
+
+## Returns
+
+If the update is successful, it returns a product object with the updated information.
+
+<ResponseExample>
+
+```json Response
+{
+    "id": "01hhyjnrdbc1xhgmd34hs1v3en",
+    "entity": "product",
+    "livemode": false,
+    "name": "Super Product",
+    "description": null,
+    "images": [],
+    "metadata": [],
+    "created_at": 1702907011,
+    "updated_at": 1702911993
+}
+```
+</ResponseExample>

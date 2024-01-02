@@ -1,0 +1,48 @@
+---
+title: "Create a price"
+description: "Creates a new price."
+api: "POST /prices"
+---
+
+## Body parameters
+
+<ParamField body="amount" type="integer" required>
+   The amount to be charged.
+</ParamField>
+
+<ParamField body="currency" type="string" required>
+   A lowercase [ISO currency
+   code](https://www.iso.org/iso-4217-currency-codes.html 'ISO currency code').
+   Currently supported currencies are: "dzd".
+</ParamField>
+
+<ParamField body="product_id" type="string" required>
+   The ID of the [Product](/v2/api-reference/products/product-object 'Product').
+</ParamField>
+
+<ParamField body="metadata" type="array">
+   A Set of key-value pairs that can be used to store additional information
+   about the product.
+</ParamField>
+
+## Returns
+
+If the request is successful, it returns a price object.
+
+<ResponseExample>
+
+```json Response
+{
+   "id": "01hhy57e5j3xzce7ama8gtk7m0",
+   "entity": "price",
+   "livemode": false,
+   "amount": 200,
+   "currency": "dzd",
+   "metadata": null,
+   "created_at": 1702892910,
+   "updated_at": 1702892910,
+   "product_id": "01hhy57dnhxf6pq4zcmw7tjnp6"
+}
+```
+
+</ResponseExample>

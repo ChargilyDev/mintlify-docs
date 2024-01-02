@@ -1,0 +1,40 @@
+---
+title: "Update a price"
+description: "Updates the information of a price by defining the values for the passed parameters. Any parameters not supplied will remain unaltered."
+api: "POST /prices/{id}"
+---
+
+## Path parameters
+
+<ParamField path="id" type="string">
+   The ID of the price.
+</ParamField>
+
+## Body parameters
+
+<ParamField body="metadata" type="array">
+   A Set of key-value pairs that can be used to store additional information
+   about the price.
+</ParamField>
+
+## Returns
+
+If the update is successful, it returns a price object with the updated information.
+
+<ResponseExample>
+
+```json Response
+{
+   "id": "01hhy57e5j3xzce7ama8gtk7m0",
+   "entity": "price",
+   "livemode": false,
+   "amount": 200,
+   "currency": "dzd",
+   "metadata": null,
+   "created_at": 1702892910,
+   "updated_at": 1702892910,
+   "product_id": "01hhy57dnhxf6pq4zcmw7tjnp6"
+}
+```
+
+</ResponseExample>

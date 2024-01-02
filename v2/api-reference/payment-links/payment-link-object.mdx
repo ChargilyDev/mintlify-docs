@@ -1,0 +1,80 @@
+---
+title: "The Payment Link object"
+description: "A Payment Link is a URL that can be shared and when accessed, directs your customers to a hosted payment page. This link can be utilized multiple times. Every time a customer accesses the link, a new [Checkout](/v2/api-reference/checkouts/checkout-object 'Checkout') is generated."
+---
+
+## Attributes
+
+<ResponseField name="id" type="string">
+   The unique identifier of the payment link.
+</ResponseField>
+
+<ResponseField name="entity" type="string">
+   A String representing the type of the object.
+</ResponseField>
+
+<ResponseField name="livemode" type="boolean">
+   A "True" value means the request was made in Live Mode, while "False"
+   indicates Test Mode.
+</ResponseField>
+
+<ResponseField name="name" type="string">
+   A String representing the name of the payment link, it will not be shown to
+   customers, it helps you to organize payment links.
+</ResponseField>
+
+<ResponseField name="active" type="boolean">
+   The status of the payment link. If it is set to false, customers who visit
+   the URL will encounter a 404 page.
+</ResponseField>
+
+<ResponseField name="after_completion_message" type="string">
+   A message which will be displayed to the customer after a successful payment.
+</ResponseField>
+
+<ResponseField name="locale" type="string">
+   The language of the checkout page, accepted values are: 'ar', 'en' or 'fr'.
+</ResponseField>
+
+<ResponseField name="pass_fees_to_customer" type="boolean">
+   A Boolean value indicating whether the Chargily Pay fees will be paid by you,
+   the merchant, or by your customers.
+</ResponseField>
+
+<ResponseField name="updated_at" type="timestamp">
+   Timestamp indicating when the last time the payment link was updated (edited).
+</ResponseField>
+
+<ResponseField name="metadata" type="dictionary">
+   A Set of key-value pairs that can be used to store additional information
+   about the payment link.
+</ResponseField>
+
+<ResponseField name="created_at" type="timestamp">
+   Timestamp indicating when the customer was created.
+</ResponseField>
+
+<ResponseField name="updated_at" type="timestamp">
+   Timestamp indicating when the last time the customer was updated (edited).
+</ResponseField>
+
+<ResponseExample>
+
+```json The Payment Link Object
+{
+   "id": "01hhhtvg4w7gk4mcaxmgzb2ynw",
+   "entity": "payment_link",
+   "livemode": false,
+   "name": "Payment Link for Facebook page.",
+   "active": 1,
+   "after_completion_message": "The product will arrive in 03 days.",
+   "locale": "ar",
+   "pass_fees_to_customer": false,
+   "metadata": [],
+   "created_at": 1702479380,
+   "updated_at": 1702479380,
+   "url": "https://pay.chargily.dz/test/payment-links/01hhhtvg4w7gk4mcaxmgzb2ynw"
+}
+```
+
+</ResponseExample>

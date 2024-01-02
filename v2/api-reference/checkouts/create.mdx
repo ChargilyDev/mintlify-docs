@@ -1,0 +1,87 @@
+---
+title: "Create a checkout"
+description: "Creates a new checkout."
+api: "POST /checkouts"
+---
+
+## Body parameters
+
+<ParamField body="items" type="array" required multiple>
+   The items are the products that are being sold.
+
+    <Expandable title="items">
+        <ParamField body="price" type="string" required>
+        The ID of the [Price](/v2/api-reference/prices/price-object "Price").
+        </ParamField>
+
+        <ParamField body="quantity" type="integer" required>
+         The quantity of the item.
+        </ParamField>
+    </Expandable>
+
+</ParamField>
+
+<ParamField body="success_url" type="string" required>
+   The URL where your customer will be redirected after a successful payment.
+</ParamField>
+
+<ParamField body="customer_id" type="string">
+   The ID of an existing [Customer](/v2/api-reference/customers/customer-object
+   "Customer").
+</ParamField>
+
+<ParamField body="failure_url" type="string">
+   The URL where your customer will be redirected after a failed or canceled
+   payment.
+</ParamField>
+
+<ParamField body="description" type="string">
+   A description of the checkout. You can use this field to save a note about
+   the checkout.
+</ParamField>
+
+<ParamField body="locale" type="string">
+   The language of the checkout page, accepted values are: 'ar', 'en' or 'fr'.
+</ParamField>
+
+<ParamField body="pass_fees_to_customer" type="string">
+   A Boolean value indicating whether the Chargily Pay fees will be paid by you,
+   the merchant, or by your customers.
+</ParamField>
+
+<ParamField body="metadata" type="array">
+   A Set of key-value pairs that can be used to store additional information
+   about the product.
+</ParamField>
+
+## Returns
+
+If the request is successful, it returns a checkout object.
+
+<ResponseExample>
+
+```json Response
+{
+   "id": "01hj5n7cqpaf0mt2d0xx85tgz8",
+   "entity": "checkout",
+   "livemode": false,
+   "amount": 2500,
+   "fees": 0,
+   "pass_fees_to_customer": 0,
+   "status": "pending",
+   "locale": "en",
+   "description": null,
+   "metadata": null,
+   "success_url": "https://my-app.com/payments/success",
+   "failure_url": "https://my-app.com/payments/failure",
+   "payment_method": null,
+   "invoice_id": null,
+   "customer_id": "01hj150206g0jxnh5r2yvvdrna",
+   "payment_link_id": null,
+   "created_at": 1703144567,
+   "updated_at": 1703144567,
+   "url": "https://pay.chargily.dz/test/checkouts/01hj5n7cqpaf0mt2d0xx85tgz8/pay"
+}
+```
+
+</ResponseExample>

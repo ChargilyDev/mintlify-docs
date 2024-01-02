@@ -1,78 +1,204 @@
 {
-  "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
-  "logo": {
-    "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
-  },
-  "favicon": "/favicon.svg",
-  "colors": {
-    "primary": "#0D9373",
-    "light": "#07C983",
-    "dark": "#0D9373",
-    "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
-    }
-  },
-  "topbarLinks": [
-    {
-      "name": "Support",
-      "url": "mailto:hi@mintlify.com"
-    }
-  ],
-  "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
-  },
-  "tabs": [
-    {
-      "name": "API Reference",
-      "url": "api-reference"
-    }
-  ],
-  "anchors": [
-    {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
-    },
-    {
-      "name": "Community",
-      "icon": "slack",
-      "url": "https://mintlify.com/community"
-    },
-    {
-      "name": "Blog",
-      "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
-    }
-  ],
-  "navigation": [
-    {
-      "group": "Get Started",
-      "pages": ["introduction", "quickstart", "development"]
-    },
-    {
-      "group": "Essentials",
-      "pages": ["essentials/markdown", "essentials/code", "essentials/images", "essentials/settings", "essentials/navigation"]
-    },
-    {
-      "group": "API Documentation",
-      "pages": ["api-reference/introduction"]
-    },
-    {
-      "group": "Endpoint Examples",
-      "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
-      ]
-    }
-  ],
-  "footerSocials": {
-    "twitter": "https://twitter.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://www.linkedin.com/company/mintsearch"
-  }
+   "versions": ["V2", "V1"],
+   "name": "Chargily Pay Documentation",
+   "logo": {
+      "dark": "/logo/dark.svg",
+      "light": "/logo/light.svg"
+   },
+   "favicon": "/favicon.svg",
+   "colors": {
+      "primary": "#680488",
+      "light": "#be5fff",
+      "dark": "#680488",
+      "anchors": {
+         "from": "#680488",
+         "to": "#be5fff"
+      }
+   },
+   "topbarLinks": [
+      {
+         "name": "Live Support",
+         "url": "https://chargi.link/WaPay"
+      }
+   ],
+   "topbarCtaButton": {
+      "name": "Dashboard",
+      "url": "https://pay.chargily.io/dashboard"
+   },
+   "anchors": [
+      {
+         "name": "API Reference",
+         "icon": "link",
+         "url": "v2/api-reference",
+         "version": "V2"
+      },
+      {
+         "name": "Community",
+         "icon": "telegram",
+         "url": "https://t.me/+653KV9zxIxAwNDY0",
+         "version": "V2"
+      }
+   ],
+   "navigation": [
+      {
+         "group": "Get Started",
+         "pages": [
+            "v2/introduction",
+            "v2/create-account",
+            "v2/applications",
+            "v2/test-and-live-mode",
+            "v2/api-keys"
+         ],
+         "version": "V2"
+      },
+      {
+         "group": "Must Know",
+         "pages": ["v2/webhooks", "v2/account-verification", "v2/fees"],
+         "version": "V2"
+      },
+      {
+         "group": "Start The Integration",
+         "pages": [
+            "v2/integration-introduction",
+            "v2/before-you-start",
+            "v2/first-api-request",
+            "v2/create-a-price",
+            "v2/create-a-checkout",
+            "v2/handle-webhooks"
+         ],
+         "version": "V2"
+      },
+      {
+         "group": "API Documentation",
+         "pages": [
+            "v2/api-reference/introduction",
+            "v2/api-reference/authentication"
+         ],
+         "version": "V2"
+      },
+      {
+         "group": "Balance",
+         "pages": [
+            "v2/api-reference/balance/balance-object",
+            "v2/api-reference/balance/retrieve-balance"
+         ],
+         "version": "V2"
+      },
+      {
+         "group": "Customers",
+         "pages": [
+            "v2/api-reference/customers/customer-object",
+            "v2/api-reference/customers/create",
+            "v2/api-reference/customers/update",
+            "v2/api-reference/customers/retrieve",
+            "v2/api-reference/customers/list",
+            "v2/api-reference/customers/delete"
+         ],
+         "version": "V2"
+      },
+      {
+         "group": "Products",
+         "pages": [
+            "v2/api-reference/products/product-object",
+            "v2/api-reference/products/create",
+            "v2/api-reference/products/update",
+            "v2/api-reference/products/retrieve",
+            "v2/api-reference/products/list",
+            "v2/api-reference/products/delete"
+         ],
+         "version": "V2"
+      },
+      {
+         "group": "Prices",
+         "pages": [
+            "v2/api-reference/prices/price-object",
+            "v2/api-reference/prices/create",
+            "v2/api-reference/prices/update",
+            "v2/api-reference/prices/retrieve",
+            "v2/api-reference/prices/list"
+         ],
+         "version": "V2"
+      },
+      {
+         "group": "Checkouts",
+         "pages": [
+            "v2/api-reference/checkouts/checkout-object",
+            "v2/api-reference/checkouts/create",
+            "v2/api-reference/checkouts/retrieve",
+            "v2/api-reference/checkouts/list",
+            "v2/api-reference/checkouts/items"
+         ],
+         "version": "V2"
+      },
+      {
+         "group": "Payment Links",
+         "pages": [
+            "v2/api-reference/payment-links/payment-link-object",
+            "v2/api-reference/payment-links/create",
+            "v2/api-reference/payment-links/update",
+            "v2/api-reference/payment-links/retrieve",
+            "v2/api-reference/payment-links/list",
+            "v2/api-reference/payment-links/items"
+         ],
+         "version": "V2"
+      },
+      {
+         "group": "Get Started with Chargily Pay V1",
+         "pages": ["v1/introduction", "v1/api", "v1/test-webhook-handler"],
+         "version": "V1"
+      },
+      {
+         "group": "Addons for programming languages",
+         "pages": [
+            "v1/php",
+            "v1/javascript",
+            "v1/python",
+            "v1/java",
+            "v1/kotlin",
+            "v1/csharp",
+            "v1/ruby",
+            "v1/dart"
+         ],
+         "version": "V1"
+      },
+      {
+         "group": "Addons for frameworks",
+         "pages": [
+            "v1/laravel",
+            "v1/django",
+            "v1/symphony",
+            "v1/react",
+            "v1/nextjs",
+            "v1/flutter",
+            "v1/vuejs",
+            "v1/reactnative",
+            "v1/springboot"
+         ],
+         "version": "V1"
+      },
+      {
+         "group": "Wordpress",
+         "pages": ["v1/woocommerce-plugin"],
+         "version": "V1"
+      },
+      {
+         "group": "Extra",
+         "pages": ["v1/faq"],
+         "version": "V1"
+      }
+   ],
+   "footerSocials": {
+      "website": "https://chargily.com/#dev",
+      "github": "https://github.com/Chargily",
+      "telegram": "https://t.me/+653KV9zxIxAwNDY0"
+   },
+   "api": {
+      "baseUrl": "https://pay.chargily.net/test/api/v2",
+      "auth": {
+         "method": "bearer"
+      }
+   },
+   "metadata": {
+      "og:image": "https://i.imgur.com/lfB0A0u.png"
+   }
 }

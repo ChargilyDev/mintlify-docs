@@ -1,0 +1,39 @@
+---
+title: 'Retrieve balance'
+description: 'Retrieves the current account (based the API Secret Key employed in the request) balance for the three wallets (DZD, EUR, and USD).'
+api: 'GET /balance'
+---
+
+## Returns
+Returns an object of type `balance` containing the current balance information.
+
+<ResponseExample>
+
+```json The Balance Object
+{
+    "entity": "balance",
+    "livemode": false,
+    "wallets": [
+        {
+            "currency": "dzd",
+            "balance": 50000,
+            "ready_for_payout": "40000",
+            "on_hold": 10000
+        },
+        {
+            "currency": "usd",
+            "balance": 2000,
+            "ready_for_payout": "1800",
+            "on_hold": 200
+        },
+        {
+            "currency": "eur",
+            "balance": 500,
+            "ready_for_payout": "250",
+            "on_hold": 250
+        }
+    ]
+}
+```
+
+</ResponseExample>

@@ -1,0 +1,43 @@
+---
+title: 'Retrieve a checkout'
+description: "Retrieves all the information of an already-existing checkout by providing it's unique identifier (ID)."
+api: 'GET /checkouts/{id}'
+---
+
+## Path parameters
+
+<ParamField path="id" type="string">
+  The ID of the checkout.
+</ParamField>
+
+## Returns
+
+If a valid ID is provided, it returns a checkout object.
+
+<ResponseExample>
+
+```json Response
+{
+   "id": "01hj5n7cqpaf0mt2d0xx85tgz8",
+   "entity": "checkout",
+   "livemode": false,
+   "amount": 2500,
+   "fees": 0,
+   "pass_fees_to_customer": 0,
+   "status": "pending",
+   "locale": "en",
+   "description": null,
+   "metadata": null,
+   "success_url": "https://my-app.com/payments/success",
+   "failure_url": "https://my-app.com/payments/failure",
+   "payment_method": null,
+   "invoice_id": null,
+   "customer_id": "01hj150206g0jxnh5r2yvvdrna",
+   "payment_link_id": null,
+   "created_at": 1703144567,
+   "updated_at": 1703144567,
+   "url": "https://pay.chargily.dz/test/checkouts/01hj5n7cqpaf0mt2d0xx85tgz8/pay",
+}
+```
+
+</ResponseExample>

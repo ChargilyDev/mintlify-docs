@@ -1,0 +1,33 @@
+---
+title: "Retrieve a price"
+description: "Retrieves all the information of an already-existing price by providing it's unique identifier (ID)."
+api: "GET /prices/{id}"
+---
+
+## Path parameters
+
+<ParamField path="id" type="string">
+   The ID of the price.
+</ParamField>
+
+## Returns
+
+If a valid ID is provided, it returns a price object.
+
+<ResponseExample>
+
+```json Response
+{
+   "id": "01hhy57e5j3xzce7ama8gtk7m0",
+   "entity": "price",
+   "livemode": false,
+   "amount": 200,
+   "currency": "dzd",
+   "metadata": null,
+   "created_at": 1702892910,
+   "updated_at": 1702892910,
+   "product_id": "01hhy57dnhxf6pq4zcmw7tjnp6"
+}
+```
+
+</ResponseExample>

@@ -1,0 +1,66 @@
+---
+title: "Create a customer"
+description: "Creates a new customer."
+api: "POST /customers"
+---
+
+## Body parameters
+
+<ParamField body="name" type="string" required>
+   The name of the customer.
+</ParamField>
+
+<ParamField body="email" type="string">
+   The email of the customer.
+</ParamField>
+
+<ParamField body="address" type="object">
+The address of the customer
+
+<Expandable title="address">
+    <ParamField body="country" type="string">
+      The country of the customer.
+    </ParamField>
+
+    <ParamField body="state" type="string">
+      The state of the customer.
+    </ParamField>
+
+    <ParamField body="address" type="string">
+      The address line of the customer.
+    </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="metadata" type="array">
+   A Set of key-value pairs that can be used to store additional information
+   about the product.
+</ParamField>
+
+## Returns
+
+If the request is successful, it returns a customer object.
+
+<ResponseExample>
+
+```json Response
+{
+   "id": "01hj0p5s3ygy2mx1czg2wzcc4x",
+   "entity": "customer",
+   "livemode": false,
+   "name": "Hocine Saad",
+   "email": null,
+   "phone": null,
+   "address": {
+      "country": "Algeria",
+      "state": "Tizi-Ouzou",
+      "address": "123 Main Street"
+   },
+   "metadata": null,
+   "created_at": 1702977791,
+   "updated_at": 1702977791
+}
+```
+
+</ResponseExample>

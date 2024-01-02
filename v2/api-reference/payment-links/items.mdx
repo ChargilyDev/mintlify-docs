@@ -1,0 +1,66 @@
+---
+title: "Retrieve a payment link's items"
+description: "Retrieves all the items of a payment link."
+api: "GET /payment-links/{id}/items"
+---
+
+## Path parameters
+
+<ParamField path="id" type="string">
+   The ID of the product.
+</ParamField>
+
+## Query parameters
+
+<ParamField query="per_page" type="integer">
+   A numeric value indicating the quantity of payment links to be returned with
+   the request, with a minimum value of 1 and a maximum value of 50.
+</ParamField>
+
+## Returns
+
+A key-value array, containing a data property which is an array of all the items of the payment link, limited to a maximum of `per_page` value.
+
+<ResponseExample>
+
+```json Response
+{
+   "livemode": false,
+   "current_page": 1,
+   "data": [
+      {
+         "id": "01hhhtkgqsxmdsse82vnmeg26n",
+         "entity": "price",
+         "amount": 5000,
+         "quantity": 10,
+         "adjustable_quantity": 0,
+         "currency": "dzd",
+         "metadata": null,
+         "created_at": 1702479119,
+         "updated_at": 1702479119,
+         "product_id": "01hhhtkg70gca88n1h65wpe8gn"
+      },
+      {
+         "id": "01hhhtkgqfqq3azf2dag3qv0eh",
+         "entity": "price",
+         "amount": 2500,
+         "quantity": 1,
+         "adjustable_quantity": 1,
+         "currency": "dzd",
+         "metadata": null,
+         "created_at": 1702479119,
+         "updated_at": 1702479119,
+         "product_id": "01hhhtkg70gca88n1h65wpe8gn"
+      }
+   ],
+   "first_page_url": "https://pay.chargily.net/test/api/v2/payment-links/01hhhtvg4w7gk4mcaxmgzb2ynw/items?page=1",
+   "last_page": 1,
+   "last_page_url": "https://pay.chargily.net/test/api/v2/payment-links/01hhhtvg4w7gk4mcaxmgzb2ynw/items?page=1",
+   "next_page_url": null,
+   "path": "https://pay.chargily.net/test/api/v2/payment-links/01hhhtvg4w7gk4mcaxmgzb2ynw/items",
+   "per_page": 10,
+   "prev_page_url": null,
+   "total": 2
+}
+```
+</ResponseExample>
