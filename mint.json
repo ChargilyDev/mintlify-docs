@@ -193,7 +193,7 @@
       "telegram": "https://t.me/+653KV9zxIxAwNDY0"
    },
    "api": {
-      "baseUrl": "https://pay.chargily.net/test/api/Chargily Pay V2",
+      "baseUrl": "https://pay.chargily.net/test/api/v2",
       "auth": {
          "method": "bearer"
       }
