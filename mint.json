@@ -144,7 +144,7 @@
       },
       {
          "group": "Get Started with Chargily Pay Chargily Pay V1",
-         "pages": ["pay-v1/introduction", "pay-v1/api", "pay-v1/test-webhook-handler"],
+         "pages": ["pay-v1/introduction", "pay-v1/chargily-api", "pay-v1/test-webhook-handler"],
          "version": "Chargily Pay V1"
       },
       {

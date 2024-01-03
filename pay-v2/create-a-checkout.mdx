@@ -5,11 +5,11 @@ description: "You can now create a Checkout using the Price you just created."
 
 ## Create a Checkout
 
-<Note>Don't forget to replace `<YOUR_SECRET_KEY_HERE>` with your [API Secret Key](/v2/api-keys "API Secret Key")</Note>
+<Note>Don't forget to replace `<YOUR_SECRET_KEY_HERE>` with your [API Secret Key](/pay-v2/api-keys "API Secret Key")</Note>
 
 <Tip>
    For more details about the Checkout Create endpoint, refer to its [API
-   Reference.](/v2/api-reference/checkouts/create "API Reference.")
+   Reference.](/pay-v2/api-reference/checkouts/create "API Reference.")
 </Tip>
 
 <CodeGroup>
@@ -172,7 +172,7 @@ If everything worked, you should get a response like this:
    "url": "https://pay.chargily.dz/test/checkouts/01hj5n7cqpaf0mt2d0xx85tgz8/pay",
 }
 ```
-Which is the [Checkout](/v2/api-reference/checkouts/checkout-object "Checkout") object you just created.  
+Which is the [Checkout](/pay-v2/api-reference/checkouts/checkout-object "Checkout") object you just created.  
 
 You can see in the Response a parameter called `url`:
 ```json
@@ -184,8 +184,8 @@ Now, when your customer goes to the payment link and successfully pays, how can 
 
 ## Next
 
-You will see now how to make your website or application react to a successful payment using [Webhooks](/v2/webhooks "Webhooks").
+You will see now how to make your website or application react to a successful payment using [Webhooks](/pay-v2/webhooks "Webhooks").
 
-<Card title="Receive webhooks" icon="link" href="/v2/create-a-checkout">
+<Card title="Receive webhooks" icon="link" href="/pay-v2/handle-webhooks">
   You can now create a Checkout using the Price you just created.
 </Card>
