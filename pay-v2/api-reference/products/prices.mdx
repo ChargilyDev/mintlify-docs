@@ -1,0 +1,66 @@
+---
+title: "Retrieve a products's prices"
+description: "Retrieves all the prices of a product."
+api: "GET /products/{id}/prices"
+---
+
+## Path parameters
+
+<ParamField path="id" type="string">
+   The ID of the product.
+</ParamField>
+
+## Query parameters
+
+<ParamField query="per_page" type="integer">
+   A numeric value indicating the quantity of prices to be returned with
+   the request, with a minimum value of 1 and a maximum value of 50.
+</ParamField>
+
+## Returns
+
+A key-value array, containing a data property which is an array of all the prices of the product, limited to a maximum of `per_page` value.
+
+<ResponseExample>
+
+```json Response
+{
+    "livemode": false,
+    "current_page": 1,
+    "data": [
+        {
+            "id": "01hkfeqh157vnbtv7xrrcgchpr",
+            "entity": "price",
+            "amount": 5000,
+            "currency": "dzd",
+            "metadata": {
+                "brand": "apple"
+            },
+            "created_at": 1704547042,
+            "updated_at": 1704547042,
+            "product_id": "01hkfdv9grv7eyyzxrzqz72596"
+        },
+        {
+            "id": "01hkfekvqyc5tnhw7pyg5yw2vs",
+            "entity": "price",
+            "amount": 5000,
+            "currency": "dzd",
+            "metadata": {
+                "color": "red"
+            },
+            "created_at": 1704546922,
+            "updated_at": 1704546922,
+            "product_id": "01hkfdv9grv7eyyzxrzqz72596"
+        }
+    ],
+    "first_page_url": "http://pay.chargily.local/test/api/v2/products/01hkfdv9grv7eyyzxrzqz72596/prices?page=1",
+    "last_page": 1,
+    "last_page_url": 1,
+    "next_page_url": null,
+    "path": "http://pay.chargily.local/test/api/v2/products/01hkfdv9grv7eyyzxrzqz72596/prices",
+    "per_page": 10,
+    "prev_page_url": null,
+    "total": 2
+}
+```
+</ResponseExample>

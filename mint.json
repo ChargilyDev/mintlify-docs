@@ -104,7 +104,8 @@
             "pay-v2/api-reference/products/update",
             "pay-v2/api-reference/products/retrieve",
             "pay-v2/api-reference/products/list",
-            "pay-v2/api-reference/products/delete"
+            "pay-v2/api-reference/products/delete",
+            "pay-v2/api-reference/products/prices"
          ],
          "version": "Chargily Pay V2"
       },
