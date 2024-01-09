@@ -35,6 +35,11 @@ api: "POST /checkouts"
    payment.
 </ParamField>
 
+<ParamField body="webhook_endpoint" type="string">
+   The URL of your endpoint that will receive the webhook events sent by
+   Chargily Pay.
+</ParamField>
+
 <ParamField body="description" type="string">
    A description of the checkout. You can use this field to save a note about
    the checkout.
@@ -74,6 +79,7 @@ If the request is successful, it returns a checkout object.
    "metadata": null,
    "success_url": "https://my-app.com/payments/success",
    "failure_url": "https://my-app.com/payments/failure",
+   "webhook_endpoint": null,
    "payment_method": null,
    "invoice_id": null,
    "customer_id": "01hj150206g0jxnh5r2yvvdrna",

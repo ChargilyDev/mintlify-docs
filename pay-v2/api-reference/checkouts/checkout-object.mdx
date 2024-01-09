@@ -54,6 +54,11 @@ description: "A Checkout is used to make your customers make a payment. Each tim
    payment.
 </ResponseField>
 
+<ResponseField name="webhook_endpoint" type="string">
+   The URL of your endpoint that will receive the webhook events sent by
+   Chargily Pay.
+</ResponseField>
+
 <ResponseField name="payment_method" type="nullable, string">
    The payment method used to make the payment.
 </ResponseField>
@@ -104,6 +109,7 @@ description: "A Checkout is used to make your customers make a payment. Each tim
    "metadata": null,
    "success_url": "https://my-app.com/payments/success",
    "failure_url": "https://my-app.com/payments/failure",
+   "webhook_endpoint": null,
    "payment_method": null,
    "invoice_id": null,
    "customer_id": "01hj150206g0jxnh5r2yvvdrna",
