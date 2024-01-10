@@ -10,11 +10,11 @@ description: "A Checkout is used to make your customers make a payment. Each tim
 </ResponseField>
 
 <ResponseField name="entity" type="string">
-   A String representing the type of the object.
+   A String represents the type of the object.
 </ResponseField>
 
 <ResponseField name="livemode" type="boolean">
-   A "True" value means the request was made in Live Mode, while "False"
+   A "True" value means the request was made in Live Mode, while a "False"
    indicates Test Mode.
 </ResponseField>
 
@@ -22,18 +22,22 @@ description: "A Checkout is used to make your customers make a payment. Each tim
    The total of all the items in the checkout.
 </ResponseField>
 
+<ResponseField name="currency" type="string">
+   The currency of the checkout. A 3-letter ISO code.
+</ResponseField>
+
 <ResponseField name="fees" type="integer">
    The fees of the checkout.
 </ResponseField>
 
 <ResponseField name="pass_fees_to_customer" type="boolean">
-   A Boolean value indicating whether the Chargily Pay fees will be paid by you,
-   the merchant, or by your customers.
+   A Boolean value indicates whether the Chargily Pay fees will be paid by you,
+   the merchant, or your customers.
 </ResponseField>
 
 <ResponseField name="status" type="string">
    The current status of the checkout. Can be one of
-   "pending","processing","paid","failed" or"canceled",
+   "pending", "processing", "paid", "failed" or "canceled",
 </ResponseField>
 
 <ResponseField name="locale" type="string">
@@ -101,6 +105,7 @@ description: "A Checkout is used to make your customers make a payment. Each tim
    "entity": "checkout",
    "livemode": false,
    "amount": 2500,
+   "currency": "dzd",
    "fees": 0,
    "pass_fees_to_customer": 0,
    "status": "pending",

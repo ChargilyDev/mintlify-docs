@@ -6,8 +6,10 @@ api: "POST /checkouts"
 
 ## Body parameters
 
-<ParamField body="items" type="array" required multiple>
-   The items are the products that are being sold.
+<ParamField body="items" type="array" multiple>
+   **Required if the parameters `amount` and `currency` are not provided.**
+
+The items are the products that are being sold.
 
     <Expandable title="items">
         <ParamField body="price" type="string" required>
@@ -18,6 +20,22 @@ api: "POST /checkouts"
          The quantity of the item.
         </ParamField>
     </Expandable>
+
+</ParamField>
+
+<ParamField body="amount" type="integer">
+   **Required if the parameter `items` is not provided.**
+
+   The total amount of the checkout.
+
+</ParamField>
+
+<ParamField body="currency" type="string">
+  **Required if the parameter `amount` is provided.**
+
+   A lowercase [ISO currency
+   code](https://www.iso.org/iso-4217-currency-codes.html "ISO currency code").
+   Currently supported currencies are: "dzd".
 
 </ParamField>
 
@@ -71,6 +89,7 @@ If the request is successful, it returns a checkout object.
    "entity": "checkout",
    "livemode": false,
    "amount": 2500,
+   "currency": "dzd",
    "fees": 0,
    "pass_fees_to_customer": 0,
    "status": "pending",
