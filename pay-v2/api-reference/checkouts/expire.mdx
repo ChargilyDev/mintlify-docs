@@ -1,18 +1,25 @@
 ---
 title: 'Expire a checkout'
-description: 'Expires a non expired checkout.'
+description: 'Expires a nonexpired checkout.'
 api: 'POST /checkouts/{id}/expire'
 ---
 
+By default, a Checkout expires automatically after 30 minutes. You can expire a Checkout manually by calling this endpoint.
+
 A Session can be expired only when it is not expired yet and its status is `pending`.
 
+Once the Session expires, your customers are unable to pay, and those attempting to load it will encounter a message indicating that it has expired.
 
-Once the Session expires, your customers are unable to pay, and those attempting to load it, will encounter a message indicating that it has expired.
+## Path parameters
+
+<ParamField path="id" type="string">
+   The ID of the checkout.
+</ParamField>
 
 ## Returns
 
 If the expiration succeeded, the Checkout object will be returned.
 
-If the Checkout is already expired, a `400` error will be returned.
+If the Checkout has already expired, a `400` error will be returned.
 
 If the Checkout's status is not `pending`, a `403` forbidden error will be returned.
