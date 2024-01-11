@@ -1,0 +1,18 @@
+---
+title: 'Expire a checkout'
+description: 'Expires a non expired checkout.'
+api: 'POST /checkouts/{id}/expire'
+---
+
+A Session can be expired only when it is not expired yet and its status is `pending`.
+
+
+Once the Session expires, your customers are unable to pay, and those attempting to load it, will encounter a message indicating that it has expired.
+
+## Returns
+
+If the expiration succeeded, the Checkout object will be returned.
+
+If the Checkout is already expired, a `400` error will be returned.
+
+If the Checkout's status is not `pending`, a `403` forbidden error will be returned.

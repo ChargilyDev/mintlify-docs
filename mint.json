@@ -127,7 +127,8 @@
             "pay-v2/api-reference/checkouts/create",
             "pay-v2/api-reference/checkouts/retrieve",
             "pay-v2/api-reference/checkouts/list",
-            "pay-v2/api-reference/checkouts/items"
+            "pay-v2/api-reference/checkouts/items",
+            "pay-v2/api-reference/checkouts/expire"
          ],
          "version": "Chargily Pay V2"
       },
