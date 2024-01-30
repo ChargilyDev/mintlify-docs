@@ -39,6 +39,11 @@ The items are the products that are being sold.
 
 </ParamField>
 
+<ParamField body="payment_method" type="string" default="edahabia">
+   The payment method that will be used to pay the checkout. Currently supported
+   payment methods are: "edahabia" and "cib". The customer can always change the payment method at the checkout page.
+</ParamField>
+
 <ParamField body="success_url" type="string" required>
    The URL where your customer will be redirected after a successful payment.
 </ParamField>
