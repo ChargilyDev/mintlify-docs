@@ -169,14 +169,14 @@ If everything worked, you should get a response like this:
    "payment_link_id": null,
    "created_at": 1703144567,
    "updated_at": 1703144567,
-   "url": "https://pay.chargily.dz/test/checkouts/01hj5n7cqpaf0mt2d0xx85tgz8/pay",
+   "checkout_url": "https://pay.chargily.dz/test/checkouts/01hj5n7cqpaf0mt2d0xx85tgz8/pay",
 }
 ```
 Which is the [Checkout](/pay-v2/api-reference/checkouts/checkout-object "Checkout") object you just created.  
 
-You can see in the Response a parameter called `url`:
+You can see in the Response a parameter called `checkout_url`:
 ```json
-"url": "https://pay.chargily.dz/test/checkouts/01hj5n7cqpaf0mt2d0xx85tgz8/pay"
+"checkout_url": "https://pay.chargily.dz/test/checkouts/01hj5n7cqpaf0mt2d0xx85tgz8/pay"
 ```
 This is the URL you can redirect your customer to, to complete the payment.
 
