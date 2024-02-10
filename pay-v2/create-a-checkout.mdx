@@ -61,7 +61,7 @@ const options = {
     Authorization: 'Bearer <YOUR_SECRET_KEY_HERE>',
     'Content-Type': 'application/json'
   },
-  body: '{"items":[["price":"01hhy57e5j3xzce7ama8gtk7m0","quantity":1]],"success_url":"https://your-cool-website.com/payments/success"}'
+  body: '{"items":[{"price":"01hhy57e5j3xzce7ama8gtk7m0","quantity":1}],"success_url":"https://your-cool-website.com/payments/success"}'
 };
 
 fetch('https://pay.chargily.net/test/api/v2/checkouts', options)
