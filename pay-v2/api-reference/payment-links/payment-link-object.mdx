@@ -42,7 +42,8 @@ description: "A Payment Link is a URL that can be shared and when accessed, dire
 </ResponseField>
 
 <ResponseField name="updated_at" type="timestamp">
-   Timestamp indicating when the last time the payment link was updated (edited).
+   Timestamp indicating when the last time the payment link was updated
+   (edited).
 </ResponseField>
 
 <ResponseField name="metadata" type="dictionary">
@@ -56,6 +57,15 @@ description: "A Payment Link is a URL that can be shared and when accessed, dire
 
 <ResponseField name="updated_at" type="timestamp">
    Timestamp indicating when the last time the customer was updated (edited).
+</ResponseField>
+
+<ResponseField name="collect_shipping_address" type="boolean">
+   A Boolean value indicating whether the customer will be asked to provide a
+   shipping address.
+</ResponseField>
+
+<ResponseField name="url" type="string">
+   The URL where your customer will be redirected to make the payment.
 </ResponseField>
 
 <ResponseExample>
@@ -73,6 +83,7 @@ description: "A Payment Link is a URL that can be shared and when accessed, dire
    "metadata": [],
    "created_at": 1702479380,
    "updated_at": 1702479380,
+   "collect_shipping_address": 0,
    "url": "https://pay.chargily.dz/test/payment-links/01hhhtvg4w7gk4mcaxmgzb2ynw"
 }
 ```

@@ -1,13 +1,13 @@
 ---
-title: 'Update a Payment Link'
-description: 'Updates the information of a payment link by defining the values for the passed parameters. Any parameters not supplied will remain unaltered.'
-api: 'POST /payment-links/{id}'
+title: "Update a Payment Link"
+description: "Updates the information of a payment link by defining the values for the passed parameters. Any parameters not supplied will remain unaltered."
+api: "POST /payment-links/{id}"
 ---
 
 ## Path parameters
 
 <ParamField path="id" type="string">
-  The ID of the payment link.
+   The ID of the payment link.
 </ParamField>
 
 ## Body parameters
@@ -31,6 +31,7 @@ api: 'POST /payment-links/{id}'
         <ParamField body="adjustable_quantity" type="boolean" default="false">
         </ParamField>
     </Expandable>
+
 </ParamField>
 
 <ParamField body="after_completion_message" type="string">
@@ -44,6 +45,11 @@ api: 'POST /payment-links/{id}'
 <ParamField body="pass_fees_to_customer" type="boolean">
    A Boolean value indicating whether the Chargily Pay fees will be paid by you,
    the merchant, or by your customers.
+</ParamField>
+
+<ParamField body="collect_shipping_address" type="boolean">
+   A Boolean value indicates whether the shipping address should be collected
+   from the customer.
 </ParamField>
 
 <ParamField body="metadata" type="key-value array">
@@ -70,7 +76,9 @@ If the update is successful, it returns a payment link object with the updated i
    "metadata": [],
    "created_at": 1702479380,
    "updated_at": 1702479380,
+   "collect_shipping_address": 0,
    "url": "https://pay.chargily.dz/test/payment-links/01hhhtvg4w7gk4mcaxmgzb2ynw"
 }
 ```
+
 </ResponseExample>
