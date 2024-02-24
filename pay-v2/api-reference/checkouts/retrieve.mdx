@@ -1,13 +1,13 @@
 ---
-title: 'Retrieve a checkout'
+title: "Retrieve a checkout"
 description: "Retrieves all the information of an already-existing checkout by providing it's unique identifier (ID)."
-api: 'GET /checkouts/{id}'
+api: "GET /checkouts/{id}"
 ---
 
 ## Path parameters
 
 <ParamField path="id" type="string">
-  The ID of the checkout.
+   The ID of the checkout.
 </ParamField>
 
 ## Returns
@@ -38,7 +38,9 @@ If a valid ID is provided, it returns a checkout object.
    "payment_link_id": null,
    "created_at": 1703144567,
    "updated_at": 1703144567,
-   "checkout_url": "https://pay.chargily.dz/test/checkouts/01hj5n7cqpaf0mt2d0xx85tgz8/pay",
+   "shipping_address": null,
+   "collect_shipping_address": 1,
+   "checkout_url": "https://pay.chargily.dz/test/checkouts/01hj5n7cqpaf0mt2d0xx85tgz8/pay"
 }
 ```
 

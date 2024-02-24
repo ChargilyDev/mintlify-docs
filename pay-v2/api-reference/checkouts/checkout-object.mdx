@@ -36,8 +36,8 @@ description: "A Checkout is used to make your customers make a payment. Each tim
 </ResponseField>
 
 <ResponseField name="status" type="string">
-   The current status of the checkout. Can be one of
-   "pending", "processing", "paid", "failed" or "canceled",
+   The current status of the checkout. Can be one of "pending", "processing",
+   "paid", "failed" or "canceled",
 </ResponseField>
 
 <ResponseField name="locale" type="string">
@@ -72,7 +72,8 @@ description: "A Checkout is used to make your customers make a payment. Each tim
 </ResponseField>
 
 <ResponseField name="customer_id" type="nullable, string">
-   The ID of an existing [Customer](/v2/api-reference/customers/customer-object "Customer").
+   The ID of an existing [Customer](/v2/api-reference/customers/customer-object
+   "Customer").
 </ResponseField>
 
 <ResponseField name="payment_link_id" type="nullable, string">
@@ -91,6 +92,15 @@ description: "A Checkout is used to make your customers make a payment. Each tim
 
 <ResponseField name="updated_at" type="timestamp">
    Timestamp indicating when the last time the checkout was updated (edited).
+</ResponseField>
+
+<ResponseField name="shipping_address" type="string">
+   The shipping address of the customer for the checkout.
+</ResponseField>
+
+<ResponseField name="collect_shipping_address" type="boolean">
+   A Boolean value indicates whether the shipping address should be collected
+   from the customer.
 </ResponseField>
 
 <ResponseField name="checkout_url" type="string">
@@ -121,7 +131,9 @@ description: "A Checkout is used to make your customers make a payment. Each tim
    "payment_link_id": null,
    "created_at": 1703144567,
    "updated_at": 1703144567,
-   "checkout_url": "https://pay.chargily.dz/test/checkouts/01hj5n7cqpaf0mt2d0xx85tgz8/pay",
+   "shipping_address": null,
+   "collect_shipping_address": 1,
+   "checkout_url": "https://pay.chargily.dz/test/checkouts/01hj5n7cqpaf0mt2d0xx85tgz8/pay"
 }
 ```
 
