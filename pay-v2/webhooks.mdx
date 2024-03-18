@@ -193,11 +193,12 @@ app.listen(port, () => {
 
 ```php PHP
 <?php
+
 // Your Chargily Pay Secret key, will be used to calculate the Signature
 $apiSecretKey = 'test_sk_Fje5EhFwyGTGqk4M6et3Jxxxxxxxxxxxxxxxxxxxx';
 
 // Extracting the 'signature' header from the HTTP request
-$signature = isset($_SERVER['signature']) ? $_SERVER['signature'] : null;
+$signature = isset($_SERVER['HTTP_SIGNATURE']) ? $_SERVER['HTTP_SIGNATURE'] : null;
 
 // Getting the raw payload from the request body
 $payload = file_get_contents('php://input');
@@ -222,6 +223,10 @@ if (!hash_equals($signature, $computedSignature)) {
         case 'checkout.paid':
             $checkout = $event->data;
             // Handle the successful payment.
+            break;
+        case 'checkout.canceled':
+            $checkout = $event->data;
+            // Handle the canceled payment.
             break;
         case 'checkout.failed':
             $checkout = $event->data;
