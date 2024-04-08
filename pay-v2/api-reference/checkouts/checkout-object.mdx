@@ -103,6 +103,15 @@ description: "A Checkout is used to make your customers make a payment. Each tim
    from the customer.
 </ResponseField>
 
+<ResponseField name="discount" type="string">
+   The discount applied to the checkout. It's an object that contains the
+   discount type ("percentage" or "amount") and the value of the discount.
+</ResponseField>
+
+<ResponseField name="amount_without_discount" type="integer">
+   The total amount of the checkout before applying the discount.
+</ResponseField>
+
 <ResponseField name="checkout_url" type="string">
    The URL where your customer will be redirected to make the payment.
 </ResponseField>
@@ -133,6 +142,11 @@ description: "A Checkout is used to make your customers make a payment. Each tim
    "updated_at": 1703144567,
    "shipping_address": null,
    "collect_shipping_address": 0,
+   "discount": {
+        "type": "percentage",
+        "value": 50
+    },
+   "amount_without_discount": 5000,
    "checkout_url": "https://pay.chargily.dz/test/checkouts/01hj5n7cqpaf0mt2d0xx85tgz8/pay"
 }
 ```
