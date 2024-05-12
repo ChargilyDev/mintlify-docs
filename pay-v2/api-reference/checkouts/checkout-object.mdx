@@ -31,8 +31,16 @@ description: "A Checkout is used to make your customers make a payment. Each tim
 </ResponseField>
 
 <ResponseField name="pass_fees_to_customer" type="boolean">
+   **DEPRECATED, use chargily_pay_fees_allocation instead.**  
+
    A Boolean value indicates whether the Chargily Pay fees will be paid by you,
    the merchant, or your customers.
+</ResponseField>
+
+<ResponseField name="chargily_pay_fees_allocation" type="string">
+   Can be one of "customer", "merchant" or "split".
+
+   Choose who is going to pay Chargily Pay fees ("Merchant" means you will pay the fees, "Customer" means the customer will pay the fees, "Split" means you will split the fees with the customer).
 </ResponseField>
 
 <ResponseField name="status" type="string">
@@ -126,7 +134,8 @@ description: "A Checkout is used to make your customers make a payment. Each tim
    "amount": 2500,
    "currency": "dzd",
    "fees": 0,
-   "pass_fees_to_customer": 0,
+   "pass_fees_to_customer": null,
+   "chargily_pay_fees_allocation": "customer",
    "status": "pending",
    "locale": "en",
    "description": null,

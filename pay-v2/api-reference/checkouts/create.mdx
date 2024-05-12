@@ -72,10 +72,18 @@ The items are the products that are being sold.
    The language of the checkout page, accepted values are: 'ar', 'en' or 'fr'.
 </ParamField>
 
-<ParamField body="pass_fees_to_customer" type="string">
-   A Boolean value indicating whether the Chargily Pay fees will be paid by you,
-   the merchant, or by your customers.
-</ParamField>
+<ResponseField name="pass_fees_to_customer" type="boolean">
+   **DEPRECATED, use chargily_pay_fees_allocation instead.**  
+
+   A Boolean value indicates whether the Chargily Pay fees will be paid by you,
+   the merchant, or your customers.
+</ResponseField>
+
+<ResponseField name="chargily_pay_fees_allocation" type="string">
+   Can be one of "customer", "merchant" or "split".
+
+   Choose who is going to pay Chargily Pay fees ("Merchant" means you will pay the fees, "Customer" means the customer will pay the fees, "Split" means you will split the fees with the customer).
+</ResponseField>
 
 <ParamField body="shipping_address" type="string">
    The shipping address of the customer for the checkout.
@@ -118,7 +126,8 @@ If the request is successful, it returns a checkout object.
    "amount": 2500,
    "currency": "dzd",
    "fees": 0,
-   "pass_fees_to_customer": 0,
+   "pass_fees_to_customer": null,
+   "chargily_pay_fees_allocation": "customer",
    "status": "pending",
    "locale": "en",
    "description": null,
