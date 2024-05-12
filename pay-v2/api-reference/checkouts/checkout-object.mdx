@@ -27,7 +27,15 @@ description: "A Checkout is used to make your customers make a payment. Each tim
 </ResponseField>
 
 <ResponseField name="fees" type="integer">
-   The fees of the checkout.
+   The total fees of the checkout.
+</ResponseField>
+
+<ResponseField name="fees_on_merchant" type="integer">
+   The fees of the checkout that will be paid by the merchant.
+</ResponseField>
+
+<ResponseField name=" fees_on_customer" type="integer">
+   The fees of the checkout that will be paid by the customer.
 </ResponseField>
 
 <ResponseField name="pass_fees_to_customer" type="boolean">
@@ -134,6 +142,8 @@ description: "A Checkout is used to make your customers make a payment. Each tim
    "amount": 2500,
    "currency": "dzd",
    "fees": 0,
+   "fees_on_merchant": 0,
+   "fees_on_customer": 0,
    "pass_fees_to_customer": null,
    "chargily_pay_fees_allocation": "customer",
    "status": "pending",
