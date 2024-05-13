@@ -61,9 +61,22 @@
          "pages": [
             "pay-v2/integration-introduction",
             "pay-v2/before-you-start",
-            "pay-v2/first-api-request",
-            "pay-v2/create-a-price",
-            "pay-v2/create-a-checkout",
+            {
+               "group": "The Quick Guide",
+               "pages": [
+                  "pay-v2/the-quick-guide/introduction",
+                  "pay-v2/the-quick-guide/create-a-checkout"
+               ]
+            },
+            {
+               "group": "The Full Guide",
+               "pages": [
+                  "pay-v2/the-full-guide/introduction",
+                  "pay-v2/the-full-guide/first-api-request",
+                  "pay-v2/the-full-guide/create-a-price",
+                  "pay-v2/the-full-guide/create-a-checkout"
+               ]
+            },
             "pay-v2/handle-webhooks"
          ],
          "version": "Chargily Pay V2"
