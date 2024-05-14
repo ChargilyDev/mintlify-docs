@@ -53,7 +53,7 @@
       },
       {
          "group": "Must Know",
-         "pages": ["pay-v2/webhooks", "pay-v2/account-verification", "pay-v2/fees"],
+         "pages": ["pay-v2/account-verification", "pay-v2/webhooks", "pay-v2/fees"],
          "version": "Chargily Pay V2"
       },
       {
