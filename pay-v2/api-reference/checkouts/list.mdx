@@ -29,7 +29,10 @@ A key-value array, containing a data property which is an array of checkouts, li
          "amount": 2500,
          "currency": "dzd",
          "fees": 0,
-         "pass_fees_to_customer": 0,
+         "fees_on_merchant": 0,
+         "fees_on_customer": 0,
+         "pass_fees_to_customer": null,
+         "chargily_pay_fees_allocation": "customer",
          "status": "pending",
          "locale": "en",
          "description": null,
@@ -45,6 +48,11 @@ A key-value array, containing a data property which is an array of checkouts, li
          "updated_at": 1703144567,
          "shipping_address": null,
          "collect_shipping_address": 0,
+         "discount": {
+            "type": "percentage",
+            "value": 50
+         },
+         "amount_without_discount": 5000,
          "checkout_url": "https://pay.chargily.dz/test/checkouts/01hj5n7cqpaf0mt2d0xx85tgz8/pay"
       },
       {
@@ -54,7 +62,10 @@ A key-value array, containing a data property which is an array of checkouts, li
          "amount": 5000,
          "currency": "dzd",
          "fees": 0,
-         "pass_fees_to_customer": 0,
+         "fees_on_merchant": 0,
+         "fees_on_customer": 0,
+         "pass_fees_to_customer": null,
+         "chargily_pay_fees_allocation": "customer",
          "status": "canceled",
          "locale": "ar",
          "description": null,
@@ -70,6 +81,8 @@ A key-value array, containing a data property which is an array of checkouts, li
          "updated_at": 1703144567,
          "shipping_address": null,
          "collect_shipping_address": 0,
+         "discount": null,
+         "amount_without_discount": null,
          "checkout_url": "https://pay.chargily.dz/test/checkouts/01hj152n3w1xh3vqzyhx97gfbh/pay"
       }
    ],

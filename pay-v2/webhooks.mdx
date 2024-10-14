@@ -23,7 +23,7 @@ Here is an example of a webhook payload of a successfully paid checkout:
 {
    "id": "01hjjjzf7wbc454te45mwx35fe",
    "entity": "event",
-   "livemode": "false"
+   "livemode": "false",
    "type": "checkout.paid",
    "data": {
       "id": "01hjjj9aymmrwe664nbzrv84sg",
@@ -42,7 +42,12 @@ Here is an example of a webhook payload of a successfully paid checkout:
       "success_url": "https://your-cool-website.com/payments/success",
       "payment_method": null,
       "payment_link_id": null,
-      "pass_fees_to_customer": 1,
+      "pass_fees_to_customer": null,
+      "chargily_pay_fees_allocation": "customer",
+      "shipping_address": null,
+      "collect_shipping_address": 1,
+      "discount": null,
+      "amount_without_discount": null,
       "url": "https://pay.chargily.dz/test/checkouts/01hjjj9aymmrwe664nbzrv84sg/pay"
    },
    "created_at": 1703578418,
@@ -193,11 +198,12 @@ app.listen(port, () => {
 
 ```php PHP
 <?php
+
 // Your Chargily Pay Secret key, will be used to calculate the Signature
 $apiSecretKey = 'test_sk_Fje5EhFwyGTGqk4M6et3Jxxxxxxxxxxxxxxxxxxxx';
 
 // Extracting the 'signature' header from the HTTP request
-$signature = isset($_SERVER['signature']) ? $_SERVER['signature'] : null;
+$signature = isset($_SERVER['HTTP_SIGNATURE']) ? $_SERVER['HTTP_SIGNATURE'] : null;
 
 // Getting the raw payload from the request body
 $payload = file_get_contents('php://input');
@@ -222,6 +228,10 @@ if (!hash_equals($signature, $computedSignature)) {
         case 'checkout.paid':
             $checkout = $event->data;
             // Handle the successful payment.
+            break;
+        case 'checkout.canceled':
+            $checkout = $event->data;
+            // Handle the canceled payment.
             break;
         case 'checkout.failed':
             $checkout = $event->data;

@@ -1,0 +1,30 @@
+---
+title: "Introduction"
+description: "Let's send your first Chargily Pay API request."
+---
+
+This tutorial guides you through a basic interaction with the Chargily Pay API.
+
+First, you'll make your first API call to generate a new [Product](/pay-v2/api-reference/products/product-object "Product").
+
+You will then create a [Price](/pay-v2/api-reference/prices/price-object "Price") for the Product you created, and use that Price to generate a [Checkout](/pay-v2/api-reference/checkouts/checkout-object "Checkout") to get the URL where you should redirect your customer to complete the payment.
+
+Finally, you'll see how you can use the [Webhooks](/pay-v2/webhooks "Webhook") to let your website or application receive notifications from Chargily Pay when a payment is completed, failed, or canceled and react to it.
+
+<Tip>
+   Even though this tutorial guides you through creating a **Product**, setting
+   a **Price**, and then creating a **Checkout**, you can also directly create a
+   **Checkout** directly by specifying an `amount` and `currency` as parameters.
+   You don't need to go through the steps of creating a **Product** and a
+   **Price**. For more information, check out the [Checkout API
+   reference](https://dev.chargily.com/pay-v2/api-reference/prices/create
+   "checkout API reference").
+</Tip>
+
+<Card
+   title="1. Your first API request - create a new Product"
+   icon="flag-checkered"
+   href="/pay-v2/the-full-guide/first-api-request"
+>
+   It’s time to send your first API request!
+</Card>
