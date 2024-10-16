@@ -42,6 +42,8 @@ The items are the products that are being sold.
 <ParamField body="payment_method" type="string" default="edahabia">
    The payment method that will be used to pay the checkout. Currently supported
    payment methods are: "edahabia", "cib" and "chargily_app". The customer can always change the payment method at the checkout page.
+
+   **When the payment method is "chargily_app", a "qr_code_url" param will be returned in the response.**
 </ParamField>
 
 <ParamField body="success_url" type="string" required>
