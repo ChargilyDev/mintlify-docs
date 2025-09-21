@@ -3,7 +3,8 @@
    "name": "Chargily Pay Documentation",
    "logo": {
       "dark": "/logo/dark.svg",
-      "light": "/logo/light.svg"
+      "light": "/logo/light.svg",
+      "href": "http://chargily.com/developer"
    },
    "favicon": "/favicon.svg",
    "colors": {
@@ -203,9 +204,9 @@
       }
    ],
    "footerSocials": {
-      "website": "https://chargily.com/#dev",
-      "github": "https://github.com/Chargily",
-      "telegram": "https://t.me/+653KV9zxIxAwNDY0"
+      "github": "http://github.com/chargily",
+      "reddit": "http://reddit.com/u/chargily",
+      "telegram": "http://t.me/+653KV9zxIxAwNDY0"
    },
    "api": {
       "baseUrl": "https://pay.chargily.net/test/api/v2",
