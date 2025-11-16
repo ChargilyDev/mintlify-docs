@@ -3,9 +3,8 @@
   "theme": "maple",
   "name": "Chargily Pay Documentation",
   "colors": {
-    "primary": "#680488",
-    "light": "#be5fff",
-    "dark": "#680488"
+    "primary": "#5801A2",
+    "light": "#12d1fa"
   },
   "fonts": {
     "family": "Poppins"
