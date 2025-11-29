@@ -1,6 +1,7 @@
 ---
 title: "Webhooks"
 description: "Learn how to use webhooks to make your application react to events from Chargily Pay."
+og:title: Webhooks | Chargily Pay API | Chargily for Developers
 ---
 
 ## What is a Webhook?
@@ -71,7 +72,7 @@ You need to set up an endpoint on your backend that accepts POST requests so tha
 
 <Steps>
   <Step title="Verifying the signature">
-    For security reasons, every webhook request sent to your endpoint from Chargily Pay will have a header called `signature`, which is a **HMAC** of the payload signed with your API secret key.  
+    For security reasons, every webhook request sent to your endpoint from Chargily Pay will have a header called `signature`, which is a **HMAC** of the payload signed with your API secret key.
     You need to verify it to make sure that the request came from us and that the payload hasn't been tampered with.
   </Step>
   <Step title="Identify the event">

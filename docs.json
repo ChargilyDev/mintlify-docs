@@ -146,60 +146,24 @@
         ]
       },
       {
-        "version": "Chargily Pay V1",
+        "version": "Chargily Pro V1",
         "anchors": [
           {
             "anchor": "Documentation",
             "icon": "book-open",
             "groups": [
               {
-                "group": "Get Started with Chargily Pay Chargily Pay V1",
+                "group": "Get Started",
                 "pages": [
-                  "pay-v1/introduction",
-                  "pay-v1/chargily-api",
-                  "pay-v1/test-webhook-handler"
-                ]
-              },
-              {
-                "group": "Addons for programming languages",
-                "pages": [
-                  "pay-v1/php",
-                  "pay-v1/javascript",
-                  "pay-v1/python",
-                  "pay-v1/java",
-                  "pay-v1/kotlin",
-                  "pay-v1/csharp",
-                  "pay-v1/ruby",
-                  "pay-v1/dart"
-                ]
-              },
-              {
-                "group": "Addons for frameworks",
-                "pages": [
-                  "pay-v1/laravel",
-                  "pay-v1/django",
-                  "pay-v1/symphony",
-                  "pay-v1/react",
-                  "pay-v1/nextjs",
-                  "pay-v1/flutter",
-                  "pay-v1/vuejs",
-                  "pay-v1/reactnative",
-                  "pay-v1/springboot"
-                ]
-              },
-              {
-                "group": "Wordpress",
-                "pages": [
-                  "pay-v1/woocommerce-plugin"
-                ]
-              },
-              {
-                "group": "Extra",
-                "pages": [
-                  "pay-v1/faq"
+                  "pro-v1/documentation"
                 ]
               }
             ]
+          },
+          {
+            "anchor": "Community",
+            "href": "https://t.me/+653KV9zxIxAwNDY0",
+            "icon": "telegram"
           }
         ]
       }
