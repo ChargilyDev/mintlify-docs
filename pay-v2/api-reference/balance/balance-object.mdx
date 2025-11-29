@@ -1,6 +1,7 @@
 ---
 title: 'The Balance object'
 description: This object represents your Chargily Pay balance. You can retrieve it to see the balance of your 03 wallets (DZD, USD and EUR).
+og:title: The Balance object | Chargily Pay API | Chargily for Developers
 ---
 
 ## Attributes
@@ -15,14 +16,14 @@ description: This object represents your Chargily Pay balance. You can retrieve 
 
 <ResponseField name="wallets" type="array of objects">
   An array of available balances for each currency.
-  
+
    <Expandable title="properties">
     <ResponseField name="wallets.currency" type="string">
       A lowercase ISO currency code.
     </ResponseField>
 
     <ResponseField name="wallets.balance" type="boolean">
-      Total balance of the wallet. 
+      Total balance of the wallet.
     </ResponseField>
 
     <ResponseField name="wallets.ready_for_payout" type="boolean">
