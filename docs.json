@@ -1,0 +1,209 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Chargily Pay Documentation",
+  "colors": {
+    "primary": "#680488",
+    "light": "#be5fff",
+    "dark": "#680488"
+  },
+  "favicon": "/favicon.svg",
+  "navigation": {
+    "versions": [
+      {
+        "version": "Chargily Pay V2",
+        "anchors": [
+          {
+            "anchor": "Documentation",
+            "icon": "book-open",
+            "groups": [
+              {
+                "group": "Get Started",
+                "pages": [
+                  "pay-v2/introduction",
+                  "pay-v2/create-account",
+                  "pay-v2/applications",
+                  "pay-v2/test-and-live-mode",
+                  "pay-v2/api-keys"
+                ]
+              },
+              {
+                "group": "Must Know",
+                "pages": [
+                  "pay-v2/account-verification",
+                  "pay-v2/webhooks",
+                  "pay-v2/fees"
+                ]
+              },
+              {
+                "group": "Start The Integration",
+                "pages": [
+                  "pay-v2/integration-introduction",
+                  "pay-v2/before-you-start",
+                  {
+                    "group": "The Quick Guide",
+                    "pages": [
+                      "pay-v2/the-quick-guide/introduction",
+                      "pay-v2/the-quick-guide/create-a-checkout"
+                    ]
+                  },
+                  {
+                    "group": "The Full Guide",
+                    "pages": [
+                      "pay-v2/the-full-guide/introduction",
+                      "pay-v2/the-full-guide/first-api-request",
+                      "pay-v2/the-full-guide/create-a-price",
+                      "pay-v2/the-full-guide/create-a-checkout"
+                    ]
+                  },
+                  "pay-v2/handle-webhooks"
+                ]
+              }
+            ]
+          },
+          {
+            "anchor": "API Reference",
+            "icon": "link",
+            "groups": [
+              {
+                "group": "API Documentation",
+                "pages": [
+                  "pay-v2/api-reference/introduction",
+                  "pay-v2/api-reference/authentication"
+                ]
+              },
+              {
+                "group": "Balance",
+                "pages": [
+                  "pay-v2/api-reference/balance/balance-object",
+                  "pay-v2/api-reference/balance/retrieve-balance"
+                ]
+              },
+              {
+                "group": "Customers",
+                "pages": [
+                  "pay-v2/api-reference/customers/customer-object",
+                  "pay-v2/api-reference/customers/create",
+                  "pay-v2/api-reference/customers/update",
+                  "pay-v2/api-reference/customers/retrieve",
+                  "pay-v2/api-reference/customers/list",
+                  "pay-v2/api-reference/customers/delete"
+                ]
+              },
+              {
+                "group": "Products",
+                "pages": [
+                  "pay-v2/api-reference/products/product-object",
+                  "pay-v2/api-reference/products/create",
+                  "pay-v2/api-reference/products/update",
+                  "pay-v2/api-reference/products/retrieve",
+                  "pay-v2/api-reference/products/list",
+                  "pay-v2/api-reference/products/delete",
+                  "pay-v2/api-reference/products/prices"
+                ]
+              },
+              {
+                "group": "Prices",
+                "pages": [
+                  "pay-v2/api-reference/prices/price-object",
+                  "pay-v2/api-reference/prices/create",
+                  "pay-v2/api-reference/prices/update",
+                  "pay-v2/api-reference/prices/retrieve",
+                  "pay-v2/api-reference/prices/list"
+                ]
+              },
+              {
+                "group": "Checkouts",
+                "pages": [
+                  "pay-v2/api-reference/checkouts/checkout-object",
+                  "pay-v2/api-reference/checkouts/create",
+                  "pay-v2/api-reference/checkouts/retrieve",
+                  "pay-v2/api-reference/checkouts/list",
+                  "pay-v2/api-reference/checkouts/items",
+                  "pay-v2/api-reference/checkouts/expire"
+                ]
+              },
+              {
+                "group": "Payment Links",
+                "pages": [
+                  "pay-v2/api-reference/payment-links/payment-link-object",
+                  "pay-v2/api-reference/payment-links/create",
+                  "pay-v2/api-reference/payment-links/update",
+                  "pay-v2/api-reference/payment-links/retrieve",
+                  "pay-v2/api-reference/payment-links/list",
+                  "pay-v2/api-reference/payment-links/items"
+                ]
+              }
+            ]
+          },
+          {
+            "anchor": "Community",
+            "href": "https://t.me/+653KV9zxIxAwNDY0",
+            "icon": "telegram"
+          }
+        ]
+      },
+      {
+        "version": "Chargily Pro V1",
+        "anchors": [
+          {
+            "anchor": "Documentation",
+            "icon": "book-open",
+            "groups": [
+              {
+                "group": "Get Started",
+                "pages": [
+                  "pro/documentation"
+                ]
+              }
+            ]
+          },
+          {
+            "anchor": "Community",
+            "href": "https://t.me/+653KV9zxIxAwNDY0",
+            "icon": "telegram"
+          }
+        ]
+      }
+    ]
+  },
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg",
+    "href": "http://chargily.com/developer"
+  },
+  "api": {
+    "mdx": {
+      "server": "https://pay.chargily.net/test/api/v2",
+      "auth": {
+        "method": "bearer"
+      }
+    }
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Live Support",
+        "href": "https://chargi.link/WaPay"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Dashboard",
+      "href": "https://pay.chargily.io/dashboard"
+    }
+  },
+  "seo": {
+    "metatags": {
+      "og:image": "https://i.imgur.com/lfB0A0u.png"
+    },
+    "indexing": "navigable"
+  },
+  "footer": {
+    "socials": {
+      "github": "http://github.com/chargily",
+      "reddit": "http://reddit.com/u/chargily",
+      "telegram": "http://t.me/+653KV9zxIxAwNDY0"
+    }
+  }
+}

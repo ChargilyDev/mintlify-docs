@@ -1,0 +1,589 @@
+---
+title: "Chargily Pro API Documentation"
+description: "Learn how to integrate with the Chargily Pro API for mobile top-ups and digital voucher sales."
+---
+
+## Table of Contents
+- [Overview](#overview)
+- [Authentication](#authentication)
+- [Rate Limiting](#rate-limiting)
+- [Error Handling](#error-handling)
+- [Endpoints](#endpoints)
+  - [User Management](#user-management-endpoints)
+  - [Topup/Recharge](#topuprecharge-endpoints)
+  - [Topup Configuration](#topup-configuration-endpoints)
+  - [Vouchers/Cards](#voucherscard-endpoints)
+  - [Deposits](#deposit-endpoints)
+- [Webhooks](#webhooks)
+- [API Restrictions & Validations](#api-restrictions--validations)
+
+---
+
+## Overview
+
+**Base URL**: `https://pro.chargily.net/api`
+
+Chargily Pro provides a RESTful API for managing mobile top-ups and digital voucher sales. The API supports multiple authentication methods and includes comprehensive validation middleware.
+
+### Key Features
+- Mobile top-up operations (Ooredoo, Djezzy, Mobilis)
+- Digital voucher/card sales
+- Wallet & balance management
+- Webhook notifications
+- Multi-tenant support
+- Sandbox mode for testing
+
+---
+
+## Authentication
+
+All API requests require authentication using an API Key.
+
+**Header**:
+```http
+X-Authorization: {api_key}
+```
+
+**Example**:
+```bash
+curl -X GET https://pro.chargily.net/api/user/balance \
+  -H "X-Authorization: your-api-key-here"
+```
+
+### Getting Your API Key
+
+API keys are generated through your account dashboard. Each API key is unique and associated with your user account.
+
+---
+
+## Rate Limiting
+
+- **Limit**: 2,400 requests per minute
+- **Applied to**: All API routes
+- **Response on limit**: HTTP 429 Too Many Requests
+
+---
+
+## Error Handling
+
+### Standard Error Response
+```json
+{
+  "message": "Error description",
+  "status": false
+}
+```
+
+### HTTP Status Codes
+
+| Code | Meaning | Common Causes |
+|------|---------|---------------|
+| 200 | OK | Successful GET request |
+| 201 | Created | Successful POST request |
+| 202 | Accepted | Request accepted for processing |
+| 400 | Bad Request | Invalid request format |
+| 401 | Unauthorized | Invalid/missing authentication |
+| 402 | Payment Required | Insufficient balance |
+| 403 | Forbidden | Mode inactive, permission denied |
+| 404 | Not Found | Resource doesn't exist |
+| 409 | Conflict | Duplicate request |
+| 410 | Gone | Subscription expired |
+| 413 | Payload Too Large | Pending request exists (cooldown) |
+| 422 | Unprocessable Entity | Validation failed |
+| 429 | Too Many Requests | Rate limit exceeded |
+| 500 | Internal Server Error | Server-side error |
+
+---
+
+## Endpoints
+
+### User Management Endpoints
+
+#### Get User Balance
+Returns current balance and bonus for authenticated user.
+
+```http
+GET /api/user/balance
+X-Authorization: {api_key}
+```
+
+**Authentication**: API Key required
+
+**Response** (200 OK):
+```json
+{
+  "balance": 150000,
+  "bonus": 5000
+}
+```
+
+**Note**: Amounts are in cents (divide by 100 for actual value)
+
+**Example**:
+- `balance: 150000` = 1,500.00 DZD
+- `bonus: 5000` = 50.00 DZD
+
+---
+
+#### Get All-Time User Bonus
+Returns total bonus earned by user.
+
+```http
+GET /api/user/getAllTimeUserBonus
+X-Authorization: {api_key}
+```
+
+**Response** (200 OK):
+```json
+{
+  "allTimeBonus": 25000
+}
+```
+
+**Note**: Amount in cents (25000 = 250.00 DZD)
+
+---
+
+### Topup/Recharge Endpoints
+
+#### Create Topup Request
+Creates a new mobile top-up request.
+
+```http
+POST /api/topup/requests
+X-Authorization: {api_key}
+Content-Type: application/json
+```
+
+**Authentication**: API Key required
+
+**Middleware Checks**:
+- API subscription active
+- Operator valid
+- Mode valid and active
+- Request timestamp recent (less than 30 seconds)
+- Sufficient balance
+- No duplicate pending request (3-minute cooldown)
+
+**Request Body**:
+```json
+{
+  "request_number": "REQ-2024-001",
+  "customer_name": "Ahmed Benali",
+  "phone_number": "555123456",
+  "value": 200,
+  "operator": "ooredoo",
+  "mode": "normal",
+  "country_code": "DZ",
+  "webhook_url": "https://your-app.net/webhooks/topup",
+  "created_at": "2024-01-15 10:30:00"
+}
+```
+
+**Validation Rules**:
+- `request_number`: Required, unique identifier for your system
+- `customer_name`: Required, string
+- `phone_number`: Required, must match operator format
+- `value`: Required, integer, between 10 and 5000
+- `operator`: Required, one of: `ooredoo`, `djezzy`, `mobilis`
+- `mode`: Required, valid mode for operator (e.g., "prepaid", "postpaid")
+- `country_code`: Required (e.g., "DZ")
+- `webhook_url`: Required, valid URL
+- `created_at`: Required, datetime, max 30 seconds old
+
+**Response** (201 Created):
+```json
+{
+  "message": "request sent successfully",
+  "status": true
+}
+```
+
+**Response** (402 Payment Required):
+```json
+{
+  "message": "Insufficient balance",
+  "status": false
+}
+```
+
+**Response** (413 Payload Too Large):
+```json
+{
+  "message": "Request already pending",
+  "status": false
+}
+```
+
+**Response** (422 Unprocessable Entity):
+```json
+{
+  "message": "Invalid phone number format for operator"
+}
+```
+
+---
+
+#### Get Topup Request Status
+Retrieves the status of a specific topup request.
+
+```http
+GET /api/topup/requests/{request_number}
+X-Authorization: {api_key}
+```
+
+**URL Parameters**:
+- `request_number` (string): Your unique request identifier
+
+**Response** (200 OK):
+```json
+{
+  "topupQueue": {
+    "id": 123,
+    "request_number": "REQ-2024-001",
+    "customer_name": "Ahmed Benali",
+    "phone_number": "555123456",
+    "value": 200,
+    "status": "sent",
+    "created_at": "2024-01-15T10:30:00.000000Z",
+    "updated_at": "2024-01-15T10:31:00.000000Z"
+  }
+}
+```
+
+**Possible Status Values**:
+- `pending`: Awaiting processing
+- `sent`: Successfully completed
+- `failed`: Operation failed
+- `rejected`: Request rejected
+- `expired`: Request timed out
+
+---
+
+#### Get All Sent Operations
+Returns all successfully sent topup operations for the authenticated user.
+
+```http
+GET /api/topup/sent
+X-Authorization: {api_key}
+```
+
+**Response** (200 OK):
+```json
+{
+  "topupQueue": {
+    "REQ-2024-001": "sent",
+    "REQ-2024-003": "sent",
+    "REQ-2024-007": "sent"
+  }
+}
+```
+
+---
+
+#### Check Existing Operations
+Checks which request numbers exist in the system.
+
+```http
+POST /api/topup/checkExistingOperation
+Content-Type: application/json
+```
+
+**Request Body**:
+```json
+{
+  "ids": ["REQ-2024-001", "REQ-2024-002", "REQ-2024-999"]
+}
+```
+
+**Response** (200 OK):
+```json
+{
+  "ids": ["REQ-2024-001", "REQ-2024-002"]
+}
+```
+
+**Note**: Returns only IDs that exist in the database
+
+---
+
+#### Resend Webhook for Processing Requests
+Triggers webhook resend for specific request numbers.
+
+```http
+POST /api/topup/recheckProcessingRequests
+Content-Type: application/json
+```
+
+**Request Body**:
+```json
+{
+  "ids": ["REQ-2024-001", "REQ-2024-002"]
+}
+```
+
+**Response** (202 Accepted):
+```json
+{
+  "message": "webhook sent successfully"
+}
+```
+
+**Response** (400 Bad Request):
+```json
+{
+  "message": "Invalid IDs provided"
+}
+```
+
+---
+
+### Topup Configuration Endpoints
+
+#### List Operators
+Returns all active mobile operators.
+
+```http
+GET /api/topup/operators
+```
+
+**Authentication**: None required
+
+**Response** (200 OK):
+```json
+{
+  "operators": [
+    {
+      "id": 1,
+      "name": "Ooredoo",
+      "logo": "https://storage.pro.chargily.net/operators/ooredoo.png",
+      "country_code": "DZ",
+      "first_number": ["05", "06", "07"],
+      "number_length": [9],
+      "discount": 2.5,
+      "mode_discount": 1.5
+    },
+    {
+      "id": 2,
+      "name": "Djezzy",
+      "logo": "https://storage.pro.chargily.net/operators/djezzy.png",
+      "country_code": "DZ",
+      "first_number": ["077", "078", "079"],
+      "number_length": [9],
+      "discount": 2.0,
+      "mode_discount": 1.0
+    }
+  ]
+}
+```
+
+**Fields**:
+- `first_number`: Array of valid phone number prefixes
+- `number_length`: Array of valid phone number lengths
+- `discount`: Percentage discount for regular recharges
+- `mode_discount`: Percentage discount for mode-based recharges
+
+---
+
+#### List Modes
+Returns all active recharge modes.
+
+```http
+GET /api/topup/modes
+```
+
+**Authentication**: None required
+
+**Response** (200 OK):
+```json
+{
+  "modes": [
+    {
+      "id": 5,
+      "mode": "normal",
+      "operator": "ooredoo",
+      "value": 200,
+      "amount": 205.00,
+      "discount": 1.5,
+      "operator_id": 1,
+      "is_active": true,
+      "country_code": "DZ"
+    },
+    {
+      "id": 12,
+      "mode": "carte",
+      "operator": "djezzy",
+      "value": 500,
+      "amount": 510.00,
+      "discount": 2.0,
+      "operator_id": 2,
+      "is_active": true,
+      "country_code": "DZ"
+    }
+  ]
+}
+```
+
+**Fields**:
+- `mode`: Name of the recharge mode (e.g., "prepaid", "postpaid")
+- `value`: Face value of the recharge
+- `amount`: Actual amount charged (including fees/discounts)
+- `discount`: Percentage discount for this mode
+
+---
+
+#### Get Mode Details
+Returns details for a specific mode.
+
+```http
+GET /api/topup/modes/{id}
+```
+
+**URL Parameters**:
+- `id` (integer): Mode ID
+
+**Response** (200 OK):
+```json
+{
+  "mode": {
+    "id": 5,
+    "mode": "normal",
+    "operator": "ooredoo",
+    "value": 200,
+    "amount": 205.00,
+    "discount": 1.5,
+    "operator_id": 1,
+    "is_active": true,
+    "country_code": "DZ"
+  }
+}
+```
+
+---
+
+### Vouchers/Card Endpoints
+
+#### List All Vouchers/Cards
+Returns all available digital vouchers and gift cards.
+
+```http
+GET /api/voucher/vouchers
+```
+
+**Authentication**: None required
+
+**Response** (200 OK):
+```json
+{
+  "cards": [
+    {
+      "id": 1,
+      "name": "Google Play 1000 DZD",
+      "image": "https://storage.pro.chargily.net/cards/google-play.png",
+      "value": 1000,
+      "amount": 1050.00,
+      "redeem": "Play Store",
+      "discount": 5.0,
+      "card_category_id": 1,
+      "card_category_name": "Gaming",
+      "country_code": "DZ",
+      "category_image": "https://storage.pro.chargily.net/categories/gaming.png",
+      "out_of_stock": false
+    },
+    {
+      "id": 2,
+      "name": "iTunes 500 DZD",
+      "image": "https://storage.pro.chargily.net/cards/itunes.png",
+      "value": 500,
+      "amount": 525.00,
+      "redeem": "App Store",
+      "discount": 5.0,
+      "card_category_id": 2,
+      "card_category_name": "Entertainment",
+      "country_code": "DZ",
+      "category_image": "https://storage.pro.chargily.net/categories/entertainment.png",
+      "out_of_stock": true
+    }
+  ]
+}
+```
+
+**Fields**:
+- `value`: Face value of the card
+- `amount`: Selling price
+- `redeem`: Where to redeem the card
+- `out_of_stock`: Boolean indicating availability
+
+---
+
+#### Get Voucher Details
+Returns details for a specific voucher.
+
+```http
+GET /api/voucher/vouchers/{id}
+```
+
+**URL Parameters**:
+- `id` (integer): Voucher ID
+
+**Response** (200 OK):
+```json
+{
+  "id": 1,
+  "name": "Google Play 1000 DZD",
+  "image": "https://storage.pro.chargily.net/cards/google-play.png",
+  "value": 1000,
+  "amount": 1050.00,
+  "redeem": "Play Store",
+  "discount": 5.0,
+  "card_category_id": 1,
+  "card_category_name": "Gaming",
+  "country_code": "DZ",
+  "category_image": "https://storage.pro.chargily.net/categories/gaming.png",
+  "out_of_stock": false
+}
+```
+
+**Response** (404 Not Found):
+```json
+{
+  "message": "Voucher not found"
+}
+```
+
+---
+
+#### List Card Categories
+Returns all voucher categories.
+
+```http
+GET /api/voucher/categories
+```
+
+**Authentication**: None required
+
+**Response** (200 OK):
+```json
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Gaming",
+      "image": "https://storage.pro.chargily.net/categories/gaming.png",
+      "redeem_link": "https://play.google.net/redeem",
+      "redeem_link_description": "Enter code in Play Store",
+      "country_code": "DZ"
+    },
+    {
+      "id": 2,
+      "name": "Entertainment",
+      "image": "https://storage.pro.chargily.net/categories/entertainment.png",
+      "redeem_link": "https://www.apple.net/redeem",
+      "redeem_link_description": "Redeem in App Store",
+      "country_code": "DZ"
+    }
+  ]
+}
+```
+
+---
