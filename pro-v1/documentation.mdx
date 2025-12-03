@@ -11,9 +11,9 @@ og:title: Chargily Pro API Documentation | Chargily for Developers
 - [Error Handling](#error-handling)
 - [Endpoints](#endpoints)
   - [User Management](#user-management-endpoints)
-  - [Topup/Recharge](#topuprecharge-endpoints)
+  - [Mobile Topup (flexy)](#mobile-topup-flexy-endpoints)
   - [Topup Configuration](#topup-configuration-endpoints)
-  - [Vouchers/Cards](#voucherscard-endpoints)
+  - [Vouchers/Gift Cards](#vouchers/gift-cards-endpoints)
   - [Deposits](#deposit-endpoints)
 - [Webhooks](#webhooks)
 - [API Restrictions & Validations](#api-restrictions--validations)
@@ -145,7 +145,7 @@ X-Authorization: {api_key}
 
 ---
 
-### Topup/Recharge Endpoints
+### Mobile Topup (flexy) Endpoints
 
 #### Create Topup Request
 Creates a new mobile top-up request.
@@ -187,7 +187,7 @@ Content-Type: application/json
 - `phone_number`: Required, must match operator format
 - `value`: Required, integer, between 10 and 5000
 - `operator`: Required, one of: `ooredoo`, `djezzy`, `mobilis`
-- `mode`: Required, valid mode for operator (e.g., "prepaid", "postpaid")
+- `mode`: (Bundle) Required, valid mode for operator (e.g., "prepaid", "postpaid")
 - `country_code`: Required (e.g., "DZ")
 - `webhook_url`: Required, valid URL
 - `created_at`: Required, datetime, max 30 seconds old
@@ -401,7 +401,7 @@ GET /api/topup/modes
   "modes": [
     {
       "id": 5,
-      "mode": "normal",
+      "mode": "switch",
       "operator": "ooredoo",
       "value": 200,
       "amount": 205.00,
@@ -412,7 +412,7 @@ GET /api/topup/modes
     },
     {
       "id": 12,
-      "mode": "carte",
+      "mode": "legend",
       "operator": "djezzy",
       "value": 500,
       "amount": 510.00,
@@ -426,7 +426,7 @@ GET /api/topup/modes
 ```
 
 **Fields**:
-- `mode`: Name of the recharge mode (e.g., "prepaid", "postpaid")
+- `mode`: Name of the bundle (e.g., "PixX1000", "Sama Mix")
 - `value`: Face value of the recharge
 - `amount`: Actual amount charged (including fees/discounts)
 - `discount`: Percentage discount for this mode
@@ -462,10 +462,10 @@ GET /api/topup/modes/{id}
 
 ---
 
-### Vouchers/Card Endpoints
+### Vouchers/Gift Cards Endpoints
 
-#### List All Vouchers/Cards
-Returns all available digital vouchers and gift cards.
+#### List All Vouchers
+Returns all available digital vouchers, gift and prepaid cards.
 
 ```http
 GET /api/voucher/vouchers
