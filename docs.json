@@ -9,7 +9,7 @@
   "fonts": {
     "family": "Poppins"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/favicon.ico",
   "navigation": {
     "versions": [
       {
