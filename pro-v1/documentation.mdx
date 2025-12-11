@@ -104,7 +104,7 @@ API keys are generated through your account dashboard. Each API key is unique an
 Returns current balance and bonus for authenticated user.
 
 ```http
-GET /api/user/balance
+GET /api/v1/user/balance
 X-Authorization: {api_key}
 ```
 
@@ -130,7 +130,7 @@ X-Authorization: {api_key}
 Returns total bonus earned by user.
 
 ```http
-GET /api/user/getAllTimeUserBonus
+GET /api/v1/user/getAllTimeUserBonus
 X-Authorization: {api_key}
 ```
 
@@ -151,7 +151,7 @@ X-Authorization: {api_key}
 Creates a new mobile top-up request.
 
 ```http
-POST /api/topup/requests
+POST /api/v1/topup/requests
 X-Authorization: {api_key}
 Content-Type: application/json
 ```
@@ -229,7 +229,7 @@ Content-Type: application/json
 Retrieves the status of a specific topup request.
 
 ```http
-GET /api/topup/requests/{request_number}
+GET /api/v1/topup/requests/{request_number}
 X-Authorization: {api_key}
 ```
 
@@ -265,7 +265,7 @@ X-Authorization: {api_key}
 Returns all successfully sent topup operations for the authenticated user.
 
 ```http
-GET /api/topup/sent
+GET /api/v1/topup/sent
 X-Authorization: {api_key}
 ```
 
@@ -286,7 +286,7 @@ X-Authorization: {api_key}
 Checks which request numbers exist in the system.
 
 ```http
-POST /api/topup/checkExistingOperation
+POST /api/v1/topup/checkExistingOperation
 Content-Type: application/json
 ```
 
@@ -312,7 +312,7 @@ Content-Type: application/json
 Triggers webhook resend for specific request numbers.
 
 ```http
-POST /api/topup/recheckProcessingRequests
+POST /api/v1/topup/recheckProcessingRequests
 Content-Type: application/json
 ```
 
@@ -345,7 +345,7 @@ Content-Type: application/json
 Returns all active mobile operators.
 
 ```http
-GET /api/topup/operators
+GET /api/v1/topup/operators
 ```
 
 **Authentication**: None required
@@ -390,7 +390,7 @@ GET /api/topup/operators
 Returns all active recharge modes.
 
 ```http
-GET /api/topup/modes
+GET /api/v1/topup/modes
 ```
 
 **Authentication**: None required
@@ -437,7 +437,7 @@ GET /api/topup/modes
 Returns details for a specific mode.
 
 ```http
-GET /api/topup/modes/{id}
+GET /api/v1/topup/modes/{id}
 ```
 
 **URL Parameters**:
@@ -468,7 +468,7 @@ GET /api/topup/modes/{id}
 Returns all available digital vouchers, gift and prepaid cards.
 
 ```http
-GET /api/voucher/vouchers
+GET /api/v1/voucher/vouchers
 ```
 
 **Authentication**: None required
@@ -521,7 +521,7 @@ GET /api/voucher/vouchers
 Returns details for a specific voucher.
 
 ```http
-GET /api/voucher/vouchers/{id}
+GET /api/v1/voucher/vouchers/{id}
 ```
 
 **URL Parameters**:
@@ -558,7 +558,7 @@ GET /api/voucher/vouchers/{id}
 Returns all voucher categories.
 
 ```http
-GET /api/voucher/categories
+GET /api/v1/voucher/categories
 ```
 
 **Authentication**: None required
