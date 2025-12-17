@@ -192,7 +192,7 @@
     "primary": {
       "type": "button",
       "label": "Dashboard",
-      "href": "https://pay.chargily.io/dashboard"
+      "href": "https://pay.chargily.com/dashboard"
     }
   },
   "seo": {
