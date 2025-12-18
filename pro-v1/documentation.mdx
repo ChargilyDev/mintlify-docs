@@ -38,7 +38,7 @@ Chargily Pro provides a RESTful API for managing mobile top-ups and digital vouc
 
 ## Authentication
 
-All API requests require authentication using an API Key.
+All API requests require authentication using an API Public Key.
 
 **Header**:
 ```http
@@ -51,9 +51,9 @@ curl -X GET https://pro.chargily.net/api/v1/user/balance \
   -H "X-Authorization: Bearer {your-api-key-here}"
 ```
 
-### Getting Your API Key
+### Getting Your API Public Key
 
-API keys are generated through your account dashboard. Each API key is unique and associated with your user account.
+API Public Keys are generated through your account dashboard. Each API Public Key is unique and associated with your user account.
 
 ---
 
@@ -108,7 +108,7 @@ GET /api/v1/user/balance
 X-Authorization: Bearer {api_key}
 ```
 
-**Authentication**: API Key required
+**Authentication**: API Public Key required
 
 **Response** (200 OK):
 ```json
@@ -156,7 +156,7 @@ X-Authorization: Bearer {api_key}
 Content-Type: application/json
 ```
 
-**Authentication**: API Key required
+**Authentication**: API Public Key required
 
 **Middleware Checks**:
 - API subscription active
