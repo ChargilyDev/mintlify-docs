@@ -42,13 +42,13 @@ All API requests require authentication using an API Public Key.
 
 **Header**:
 ```http
-X-Authorization: Bearer {api_key}
+X-Authorization: {api_key}
 ```
 
 **Example**:
 ```bash
 curl -X GET https://pro.chargily.net/api/v1/user/balance \
-  -H "X-Authorization: Bearer {your-api-key-here}"
+  -H "X-Authorization: {your-api-key-here}"
 ```
 
 ### Getting Your API Public Key
@@ -105,7 +105,7 @@ Returns current balance and bonus for authenticated user.
 
 ```http
 GET /api/v1/user/balance
-X-Authorization: Bearer {api_key}
+X-Authorization: {api_key}
 ```
 
 **Authentication**: API Public Key required
@@ -131,7 +131,7 @@ Returns total bonus earned by user.
 
 ```http
 GET /api/v1/user/getAllTimeUserBonus
-X-Authorization: Bearer {api_key}
+X-Authorization: {api_key}
 ```
 
 **Response** (200 OK):
@@ -152,7 +152,7 @@ Creates a new mobile top-up request.
 
 ```http
 POST /api/v1/topup/requests
-X-Authorization: Bearer {api_key}
+X-Authorization: {api_key}
 Content-Type: application/json
 ```
 
@@ -230,7 +230,7 @@ Retrieves the status of a specific topup request.
 
 ```http
 GET /api/v1/topup/requests/{request_number}
-X-Authorization: Bearer {api_key}
+X-Authorization: {api_key}
 ```
 
 **URL Parameters**:
@@ -266,7 +266,7 @@ Returns all successfully sent topup operations for the authenticated user.
 
 ```http
 GET /api/v1/topup/sent
-X-Authorization: Bearer {api_key}
+X-Authorization: {api_key}
 ```
 
 **Response** (200 OK):
