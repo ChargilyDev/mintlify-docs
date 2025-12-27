@@ -16,7 +16,7 @@ og:title: Chargily Pro API Documentation | Chargily for Developers
   - [Vouchers/Gift Cards](#vouchers/gift-cards-endpoints)
   - [Deposits](#deposit-endpoints)
 - [Webhooks](#webhooks)
-- [API Restrictions & Validations](#api-restrictions--validations)
+- [API Restrictions & Validations](#api-restrictions-&-validations)
 
 ---
 
@@ -594,3 +594,623 @@ GET /api/v1/voucher/categories
   ]
 }
 ```
+---
+
+#### Get Cards by Category
+Returns all cards in a specific category.
+
+```http
+GET /api/voucher/categories/{name_or_id}
+```
+
+**URL Parameters**:
+- `name_or_id`: Category ID (integer) or category name (string)
+
+**Response** (200 OK):
+```json
+{
+  "cards": [
+    {
+      "id": 1,
+      "name": "Google Play 1000 DZD",
+      "image": "https://storage.pro.chargily.net/cards/google-play.png",
+      "value": 1000,
+      "amount": 1050.00,
+      "redeem": "Play Store",
+      "discount": 5.0,
+      "card_category_id": 1,
+      "card_category_name": "Gaming",
+      "country_code": "DZ",
+      "category_image": "https://storage.pro.chargily.net/categories/gaming.png",
+      "out_of_stock": false
+    }
+  ]
+}
+```
+
+**Response** (404 Not Found):
+```json
+{
+  "message": "No vouchers found in this category"
+}
+```
+
+---
+
+#### Create Voucher Request
+Purchases a digital voucher.
+
+```http
+POST /api/voucher/requests
+X-Authorization: {api_key}
+Content-Type: application/json
+```
+
+**Authentication**: API Key required
+
+**Middleware Checks**:
+- API subscription active
+- Voucher category active
+- Sufficient inventory
+- Sufficient balance
+
+**Request Body**:
+```json
+{
+  "quantity": 1,
+  "voucher_name": "Google Play 1000 DZD",
+  "value": "1000",
+  "customer_name": "Ahmed Benali",
+  "request_number": "VCHR-2024-001"
+}
+```
+
+**Validation Rules**:
+- `quantity`: Required, integer, > 0
+- `voucher_name`: Required, string
+- `value`: Required, string (face value)
+- `customer_name`: Required, string
+- `request_number`: Required, unique identifier
+
+**Response** (201 Created):
+```json
+{
+  "message": "request sent successfully",
+  "voucher_serial": "XXXX-XXXX-XXXX-XXXX",
+  "voucher_key": "ABCD-1234-EFGH-5678",
+  "status": true
+}
+```
+
+**Response** (402 Payment Required):
+```json
+{
+  "message": "Insufficient balance"
+}
+```
+
+**Side Effects**:
+- Deducts amount from user balance
+- Assigns voucher from inventory
+- Marks voucher as sold
+- Awards bonus points
+
+**Sandbox Mode**:
+For testing users (karaOdin, karaOdin2, kyesmine, developer), returns encrypted/test voucher data without consuming inventory.
+
+---
+
+#### Get All Successful Vouchers
+Returns all successfully sold vouchers for the authenticated user.
+
+```http
+GET /api/voucher/sold
+X-Authorization: {api_key}
+```
+
+**Response** (200 OK):
+```json
+{
+  "voucherRequests": {
+    "VCHR-2024-001": "ABCD-1234-EFGH-5678",
+    "VCHR-2024-002": "IJKL-9012-MNOP-3456"
+  }
+}
+```
+
+**Response** (404 Not Found):
+```json
+{
+  "message": "No vouchers found"
+}
+```
+
+---
+
+#### Add Voucher to Inventory (Internal)
+Adds a new voucher code to inventory.
+
+```http
+POST /api/voucher/inventory
+Content-Type: application/json
+```
+
+**Authentication**: None (should be restricted in production)
+
+**Request Body**:
+```json
+{
+  "voucher_id": 1,
+  "voucher_key": "ABCD-1234-EFGH-5678",
+  "voucher_serial": "XXXX-XXXX-XXXX-XXXX"
+}
+```
+
+**Response** (201 Created):
+```json
+{
+  "message": "Voucher stored successfully",
+  "status": true
+}
+```
+
+**Side Effects**:
+- Increments card quantity
+- Makes voucher available for purchase
+
+---
+
+### Deposit Endpoints
+
+#### Get All Deposits
+Returns deposit history for authenticated user.
+
+```http
+GET /api/deposit/all
+X-Authorization: {api_key}
+```
+
+**Authentication**: API Key required
+
+**Response** (200 OK):
+```json
+{
+  "deposits": [
+    {
+      "id": 1,
+      "user_id": 1,
+      "amount": 10000.00,
+      "status": "approved",
+      "created_at": "2024-01-10T12:00:00.000000Z",
+      "updated_at": "2024-01-10T12:30:00.000000Z"
+    },
+    {
+      "id": 2,
+      "user_id": 1,
+      "amount": 5000.00,
+      "status": "pending",
+      "created_at": "2024-01-15T10:00:00.000000Z",
+      "updated_at": "2024-01-15T10:00:00.000000Z"
+    }
+  ]
+}
+```
+
+**Possible Status Values**:
+- `pending`: Awaiting approval
+- `approved`: Deposit confirmed
+- `rejected`: Deposit declined
+
+---
+
+#### Get Sum of Approved Deposits
+Returns total of all approved deposits for authenticated user.
+
+```http
+GET /api/deposit/sumDeposits
+X-Authorization: {api_key}
+```
+
+**Response** (200 OK):
+```json
+{
+  "total": 50000.00
+}
+```
+
+---
+
+## Webhooks
+
+### Webhook Notifications
+The system sends webhook notifications when topup request status changes.
+
+**Package**: spatie/laravel-webhook-server
+
+**Trigger Events**:
+- Status changed to: `sent`, `failed`, `rejected`, `expired`
+
+**Webhook Request**:
+```http
+POST {your_webhook_url}
+Content-Type: application/json
+X-Signature: {hmac_signature}
+```
+
+**Payload**:
+```json
+{
+  "payload": {
+    "id": 123,
+    "request_number": "REQ-2024-001",
+    "customer_name": "Ahmed Benali",
+    "phone_number": "555123456",
+    "value": 200,
+    "username": "johndoe",
+    "user_id": 1,
+    "mode": "normal",
+    "mode_id": 5,
+    "operator": "ooredoo",
+    "status": "sent",
+    "created_at": "2024-01-15 10:30:00",
+    "updated_at": "2024-01-15 10:31:00"
+  }
+}
+```
+
+### Webhook Security
+
+**Signature Verification**:
+The webhook includes an HMAC signature in the `X-Signature` header. Verify using your secret key:
+
+```php
+$signature = hash_hmac('sha256', $payload, $user->secret);
+if (!hash_equals($signature, $request->header('X-Signature'))) {
+    // Invalid signature
+}
+```
+
+**Retry Logic**:
+- Maximum 5 retry attempts
+- Exponential backoff between retries
+- SSL verification disabled (for development)
+
+---
+
+## API Restrictions & Validations
+
+All API requests go through automatic validation to ensure data integrity and prevent errors. Below are the restrictions you may encounter:
+
+### Subscription Status
+- Your API subscription must be active
+- **Error (410 Gone)**: "Subscription is expired"
+
+### Authentication
+- Valid API key required in `X-Authorization` header
+- **Error (401 Unauthorized)**: "Unauthorized"
+
+### Balance Requirements
+- Sufficient balance required for purchases
+- **Error (402 Payment Required)**: "Insufficient balance"
+
+### Operator Validation
+When creating topup requests:
+- Operator must exist and be active
+- Phone number length must match operator requirements
+- Phone number must start with valid prefix for the operator
+
+**Possible Errors**:
+- **404**: "Operator not found"
+- **422**: "Invalid phone number length"
+- **422**: "Invalid phone number format for operator"
+
+### Topup Mode Validation
+- Mode must exist for the specified operator
+- Mode must be active
+- Value must match mode requirements (for fixed-value modes)
+
+**Possible Errors**:
+- **404**: "Mode not found for operator"
+- **403**: "Mode is not active"
+
+### Request Timing & Duplicates
+- Request timestamp must be within 30 seconds
+- No duplicate requests (same `request_number` + `customer_name`)
+
+**Possible Errors**:
+- **400**: "Request timestamp too old (max 30 seconds)"
+- **409**: "Duplicate request detected"
+
+### Voucher Validation
+- Voucher category must be active and available
+- Sufficient inventory must be available for requested quantity
+
+**Possible Errors**:
+- **404**: "this voucher is not available"
+- **402**: "Insufficient voucher inventory"
+
+---
+
+## Business Logic
+
+### Topup Request Lifecycle
+
+1. **Validation**
+   - Operator valid and active
+   - Mode valid and active
+   - Phone number format correct
+   - Request timestamp recent (less than 30 seconds)
+   - Sufficient user balance
+
+2. **Duplicate Check**
+   - 3-minute cooldown per phone number
+   - Prevents duplicate pending requests
+
+3. **Balance Deduction**
+   - Amount deducted from user wallet
+   - Transaction recorded
+
+4. **Request Creation**
+   - Status set to "pending"
+   - Queued for processing
+
+5. **Processing**
+   - Automatic or manual processing
+   - Status updated to "sent"/"failed"
+
+6. **Notification**
+   - Webhook sent to client URL
+   - Up to 5 retry attempts
+
+7. **Finalization**
+   - Success: Award bonus points
+   - Failure: Refund to user balance
+
+---
+
+### Voucher Request Lifecycle
+
+1. **Validation**
+   - Voucher category active
+   - Sufficient inventory
+   - Sufficient user balance
+
+2. **Balance Deduction**
+   - Amount deducted from wallet
+   - Transaction recorded
+
+3. **Voucher Assignment**
+   - Voucher retrieved from inventory
+   - Serial and key assigned
+
+4. **Status Update**
+   - Voucher marked as sold
+   - Inventory quantity decremented
+
+5. **Bonus Award**
+   - Reward points added to bonus wallet
+
+6. **Response**
+   - Serial and key returned to client
+
+---
+
+### Sandbox Mode
+
+**Purpose**: Testing without consuming real inventory
+
+**Sandbox Users**:
+- karaOdin
+- karaOdin2
+- kyesmine
+- developer
+
+**Behavior**:
+- Returns encrypted/test voucher data
+- Does not consume inventory
+- Does not deduct real balance
+- Useful for integration testing
+
+---
+
+## Best Practices
+
+### Request Timestamps
+Always include current timestamp in `created_at` field:
+
+```javascript
+// JavaScript
+{
+  "created_at": new Date().toISOString().slice(0, 19).replace('T', ' ')
+}
+```
+
+```php
+// PHP
+[
+    'created_at' => now()->format('Y-m-d H:i:s')
+]
+```
+
+---
+
+### Webhook Implementation
+Implement webhook handler to receive status updates:
+
+```php
+Route::post('/webhooks/topup', function (Request $request) {
+    // Verify signature
+    $signature = hash_hmac('sha256', $request->getContent(), config('app.webhook_secret'));
+    if (!hash_equals($signature, $request->header('X-Signature'))) {
+        abort(401, 'Invalid signature');
+    }
+
+    // Process webhook
+    $payload = $request->input('payload');
+    $status = $payload['status'];
+    $request_number = $payload['request_number'];
+
+    // Update your local database
+    // Send notification to customer
+    // etc.
+
+    return response()->json(['status' => 'ok']);
+});
+```
+
+---
+
+### Error Handling
+Always handle API errors gracefully:
+
+```javascript
+try {
+  const response = await fetch('/api/topup/requests', {
+    method: 'POST',
+    headers: {
+      'X-Authorization': apiKey,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(requestData)
+  });
+
+  if (!response.ok) {
+    const error = await response.json();
+    if (response.status === 402) {
+      // Insufficient balance - show top-up prompt
+    } else if (response.status === 413) {
+      // Duplicate request - show pending message
+    } else {
+      // Generic error handling
+    }
+  }
+
+  const result = await response.json();
+  // Handle success
+} catch (error) {
+  // Network error handling
+}
+```
+
+---
+
+### Balance Management
+Check balance before expensive operations:
+
+```javascript
+// Check balance first
+const balanceResponse = await fetch('/api/user/balance', {
+  headers: { 'X-Authorization': apiKey }
+});
+const { balance } = await balanceResponse.json();
+
+// Balance is in cents, convert to display
+const balanceInDZD = balance / 100;
+
+if (balanceInDZD >= requiredAmount) {
+  // Proceed with operation
+} else {
+  // Show insufficient balance message
+}
+```
+
+---
+
+### Idempotency
+Use unique `request_number` for idempotent requests:
+
+```javascript
+// Generate unique request number
+const requestNumber = `REQ-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+
+const response = await fetch('/api/topup/requests', {
+  method: 'POST',
+  headers: {
+    'X-Authorization': apiKey,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    request_number: requestNumber,
+    // ... other fields
+  })
+});
+```
+
+This ensures duplicate API calls don't create duplicate charges.
+
+---
+
+## Testing
+
+### Testing with Sandbox Mode
+Use sandbox accounts for testing:
+
+```bash
+# Sandbox usernames (no real charges)
+karaOdin
+karaOdin2
+kyesmine
+developer
+```
+
+These accounts return test data without consuming real inventory or balance.
+
+---
+
+### Sample Integration Test
+
+```php
+public function test_create_topup_request()
+{
+    $user = User::factory()->create();
+    $apiKey = ApiKey::create(['user_id' => $user->id]);
+
+    // Fund user wallet
+    $user->deposit(10000); // 100.00 DZD
+
+    $response = $this->withHeaders([
+        'X-Authorization' => $apiKey->key,
+    ])->postJson('/api/topup/requests', [
+        'request_number' => 'TEST-001',
+        'customer_name' => 'Test Customer',
+        'phone_number' => '555123456',
+        'value' => 200,
+        'operator' => 'ooredoo',
+        'mode' => 'flexy',
+        'country_code' => 'DZ',
+        'webhook_url' => 'https://your-app.net/webhooks/topup',
+        'created_at' => now()->format('Y-m-d H:i:s'),
+    ]);
+
+    $response->assertStatus(201)
+             ->assertJson([
+                 'message' => 'request sent successfully',
+                 'status' => true
+             ]);
+
+    $this->assertDatabaseHas('topup_queue', [
+        'request_number' => 'TEST-001',
+        'status' => 'pending'
+    ]);
+}
+```
+
+---
+
+## Support
+
+For API support:
+- **Email**: support@chargily.net
+- **Documentation**: Check this file
+- **Issue Tracker**: Contact your account manager
+
+---
+
+## Changelog
+
+### Version 1.0 (2024-01-15)
+- Initial API documentation
+- All endpoints documented
+- Authentication methods described
+- Error handling documented
+- Webhook system explained
