@@ -1,7 +1,7 @@
 ---
-title: 'The Balance object'
+title: "The Balance object"
 description: This object represents your Chargily Pay balance. You can retrieve it to see the balance of your 03 wallets (DZD, USD and EUR).
-og:title: The Balance object | Chargily Pay API | Chargily for Developers
+og:title: The Balance object | Chargily Pay API - Edahabia API - Satim CIB Web API | Chargily for Developers
 ---
 
 ## Attributes
@@ -11,7 +11,8 @@ og:title: The Balance object | Chargily Pay API | Chargily for Developers
 </ResponseField>
 
 <ResponseField name="livemode" type="boolean">
-  A "True" value means the request was made in Live Mode, while "False" indicates Test Mode.
+  A "True" value means the request was made in Live Mode, while "False"
+  indicates Test Mode.
 </ResponseField>
 
 <ResponseField name="wallets" type="array of objects">
@@ -33,36 +34,36 @@ og:title: The Balance object | Chargily Pay API | Chargily for Developers
     <ResponseField name="wallets.on_hold" type="boolean">
       The amount of money that is on hold.
     </ResponseField>
+
   </Expandable>
 </ResponseField>
-
 
 <ResponseExample>
 
 ```json The Balance Object
 {
-    "entity": "balance",
-    "livemode": false,
-    "wallets": [
-        {
-            "currency": "dzd",
-            "balance": 50000,
-            "ready_for_payout": "40000",
-            "on_hold": 10000
-        },
-        {
-            "currency": "usd",
-            "balance": 2000,
-            "ready_for_payout": "1800",
-            "on_hold": 200
-        },
-        {
-            "currency": "eur",
-            "balance": 500,
-            "ready_for_payout": "250",
-            "on_hold": 250
-        }
-    ]
+  "entity": "balance",
+  "livemode": false,
+  "wallets": [
+    {
+      "currency": "dzd",
+      "balance": 50000,
+      "ready_for_payout": "40000",
+      "on_hold": 10000
+    },
+    {
+      "currency": "usd",
+      "balance": 2000,
+      "ready_for_payout": "1800",
+      "on_hold": 200
+    },
+    {
+      "currency": "eur",
+      "balance": 500,
+      "ready_for_payout": "250",
+      "on_hold": 250
+    }
+  ]
 }
 ```
 

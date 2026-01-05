@@ -2,14 +2,14 @@
 title: "List all customers"
 description: "Returns a list of all your customers."
 api: "GET /customers"
-og:title: List all customers | Chargily Pay API | Chargily for Developers
+og:title: List all customers | Chargily Pay API - Edahabia API - Satim CIB Web API | Chargily for Developers
 ---
 
 ## Query parameters
 
 <ParamField query="per_page" type="integer">
-   A numeric value indicating the quantity of customers to be returned with the
-   request, with a minimum value of 1 and a maximum value of 50.
+  A numeric value indicating the quantity of customers to be returned with the
+  request, with a minimum value of 1 and a maximum value of 50.
 </ParamField>
 
 ## Returns
@@ -20,44 +20,44 @@ A key-value array, containing a data property which is an array of customers, li
 
 ```json Response
 {
-   "livemode": false,
-   "current_page": 1,
-   "data": [
-      {
-         "id": "01hj0p5s3ygy2mx1czg2wzcc4x",
-         "entity": "customer",
-         "name": "Hocine Saad",
-         "email": null,
-         "phone": null,
-         "address": {
-            "country": "Algeria",
-            "state": "Tizi-Ouzou",
-            "address": "123 Main Street"
-         },
-         "metadata": null,
-         "created_at": 1702977791,
-         "updated_at": 1702977791
+  "livemode": false,
+  "current_page": 1,
+  "data": [
+    {
+      "id": "01hj0p5s3ygy2mx1czg2wzcc4x",
+      "entity": "customer",
+      "name": "Hocine Saad",
+      "email": null,
+      "phone": null,
+      "address": {
+        "country": "Algeria",
+        "state": "Tizi-Ouzou",
+        "address": "123 Main Street"
       },
-      {
-         "id": "01hj0rs3s3swmba43ef21rd2nv",
-         "entity": "customer",
-         "name": "Mahdi Chawki",
-         "email": null,
-         "phone": null,
-         "address": null,
-         "metadata": null,
-         "created_at": 1702980521,
-         "updated_at": 1702980521
-      }
-   ],
-   "first_page_url": "https://pay.chargily.net/test/api/v2/customers?page=1",
-   "last_page": 1,
-   "last_page_url": "https://pay.chargily.net/test/api/v2/customers?page=1",
-   "next_page_url": null,
-   "path": "https://pay.chargily.net/test/api/v2/customers",
-   "per_page": 10,
-   "prev_page_url": null,
-   "total": 2
+      "metadata": null,
+      "created_at": 1702977791,
+      "updated_at": 1702977791
+    },
+    {
+      "id": "01hj0rs3s3swmba43ef21rd2nv",
+      "entity": "customer",
+      "name": "Mahdi Chawki",
+      "email": null,
+      "phone": null,
+      "address": null,
+      "metadata": null,
+      "created_at": 1702980521,
+      "updated_at": 1702980521
+    }
+  ],
+  "first_page_url": "https://pay.chargily.net/test/api/v2/customers?page=1",
+  "last_page": 1,
+  "last_page_url": "https://pay.chargily.net/test/api/v2/customers?page=1",
+  "next_page_url": null,
+  "path": "https://pay.chargily.net/test/api/v2/customers",
+  "per_page": 10,
+  "prev_page_url": null,
+  "total": 2
 }
 ```
 

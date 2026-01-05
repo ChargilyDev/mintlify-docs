@@ -2,21 +2,21 @@
 title: "Create a customer"
 description: "Creates a new customer."
 api: "POST /customers"
-og:title: Create a customer | Chargily Pay API | Chargily for Developers
+og:title: Create a customer | Chargily Pay API - Edahabia API - Satim CIB Web API | Chargily for Developers
 ---
 
 ## Body parameters
 
 <ParamField body="name" type="string">
-   The name of the customer.
+  The name of the customer.
 </ParamField>
 
 <ParamField body="email" type="string">
-   The email of the customer.
+  The email of the customer.
 </ParamField>
 
 <ParamField body="phone" type="string">
-   The phone number of the customer.
+  The phone number of the customer.
 </ParamField>
 
 <ParamField body="address" type="object">
@@ -39,8 +39,8 @@ The address of the customer
 </ParamField>
 
 <ParamField body="metadata" type="array">
-   A Set of key-value pairs that can be used to store additional information
-   about the product.
+  A Set of key-value pairs that can be used to store additional information
+  about the product.
 </ParamField>
 
 ## Returns
@@ -51,20 +51,20 @@ If the request is successful, it returns a customer object.
 
 ```json Response
 {
-   "id": "01hj0p5s3ygy2mx1czg2wzcc4x",
-   "entity": "customer",
-   "livemode": false,
-   "name": "Hocine Saad",
-   "email": null,
-   "phone": null,
-   "address": {
-      "country": "Algeria",
-      "state": "Tizi-Ouzou",
-      "address": "123 Main Street"
-   },
-   "metadata": null,
-   "created_at": 1702977791,
-   "updated_at": 1702977791
+  "id": "01hj0p5s3ygy2mx1czg2wzcc4x",
+  "entity": "customer",
+  "livemode": false,
+  "name": "Hocine Saad",
+  "email": null,
+  "phone": null,
+  "address": {
+    "country": "Algeria",
+    "state": "Tizi-Ouzou",
+    "address": "123 Main Street"
+  },
+  "metadata": null,
+  "created_at": 1702977791,
+  "updated_at": 1702977791
 }
 ```
 

@@ -2,14 +2,14 @@
 title: "Create a payment link"
 description: "Creates a new payment link."
 api: "POST /payment-links"
-og:title: Create a payment link | Chargily Pay API | Chargily for Developers
+og:title: Create a payment link | Chargily Pay API - Edahabia API - Satim CIB Web API | Chargily for Developers
 ---
 
 ## Body parameters
 
 <ParamField body="name" type="string" required>
-   A String representing the name of the payment link, will not be shown to
-   customers, it helps you to organize payment links.
+  A String representing the name of the payment link, will not be shown to
+  customers, it helps you to organize payment links.
 </ParamField>
 
 <ParamField body="items" type="array" required multiple>
@@ -30,26 +30,26 @@ og:title: Create a payment link | Chargily Pay API | Chargily for Developers
 </ParamField>
 
 <ParamField body="after_completion_message" type="string">
-   A message which will be displayed to the customer after a successful payment.
+  A message which will be displayed to the customer after a successful payment.
 </ParamField>
 
 <ParamField body="locale" type="string">
-   The language of the checkout page, accepted values are: 'ar', 'en' or 'fr'.
+  The language of the checkout page, accepted values are: 'ar', 'en' or 'fr'.
 </ParamField>
 
 <ParamField body="pass_fees_to_customer" type="boolean">
-   A Boolean value indicating whether the Chargily Pay fees will be paid by you,
-   the merchant, or by your customers.
+  A Boolean value indicating whether the Chargily Pay fees will be paid by you,
+  the merchant, or by your customers.
 </ParamField>
 
 <ParamField body="collect_shipping_address" type="boolean">
-   A Boolean value indicates whether the shipping address should be collected
-   from the customer.
+  A Boolean value indicates whether the shipping address should be collected
+  from the customer.
 </ParamField>
 
 <ParamField body="metadata" type="key-value array">
-   A Set of key-value pairs that can be used to store additional information
-   about the payment link.
+  A Set of key-value pairs that can be used to store additional information
+  about the payment link.
 </ParamField>
 
 ## Returns
@@ -60,19 +60,19 @@ If the request is successful, it returns a payment link object.
 
 ```json Response
 {
-   "id": "01hhhtvg4w7gk4mcaxmgzb2ynw",
-   "entity": "payment_link",
-   "livemode": false,
-   "name": "Payment Link for Facebook page.",
-   "active": 1,
-   "after_completion_message": "The product will arrive in 03 days.",
-   "locale": "ar",
-   "pass_fees_to_customer": false,
-   "metadata": [],
-   "created_at": 1702479380,
-   "updated_at": 1702479380,
-   "collect_shipping_address": 0,
-   "url": "https://pay.chargily.dz/test/payment-links/01hhhtvg4w7gk4mcaxmgzb2ynw"
+  "id": "01hhhtvg4w7gk4mcaxmgzb2ynw",
+  "entity": "payment_link",
+  "livemode": false,
+  "name": "Payment Link for Facebook page.",
+  "active": 1,
+  "after_completion_message": "The product will arrive in 03 days.",
+  "locale": "ar",
+  "pass_fees_to_customer": false,
+  "metadata": [],
+  "created_at": 1702479380,
+  "updated_at": 1702479380,
+  "collect_shipping_address": 0,
+  "url": "https://pay.chargily.dz/test/payment-links/01hhhtvg4w7gk4mcaxmgzb2ynw"
 }
 ```
 

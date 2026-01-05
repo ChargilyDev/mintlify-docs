@@ -1,7 +1,7 @@
 ---
 title: "1. Your first API request - create a new Product"
 description: "It's time to send your first API request!"
-og:title: Your first API request | Chargily Pay API | Chargily for Developers
+og:title: Your first API request | Chargily Pay API - Edahabia API - Satim CIB Web API | Chargily for Developers
 ---
 
 Enough talking, let's get to action!
@@ -12,7 +12,10 @@ Let's create a new product called **Super Product**.
 
 <Note>Don't forget to replace `<YOUR_SECRET_KEY_HERE>` with your [API Secret Key](/pay-v2/api-keys "API Secret Key")</Note>
 
-<Tip>For more details about the Product Create endpoint, refer to its [API Reference.](/pay-v2/api-reference/products/create "API Reference.")</Tip>
+<Tip>
+  For more details about the Product Create endpoint, refer to its [API
+  Reference.](/pay-v2/api-reference/products/create "API Reference.")
+</Tip>
 
 <CodeGroup>
 
@@ -44,18 +47,18 @@ print(response.text)
 
 ```javascript JavaScript
 const options = {
-  method: 'POST',
+  method: "POST",
   headers: {
-    Authorization: 'Bearer <YOUR_SECRET_KEY_HERE>',
-    'Content-Type': 'application/json'
+    Authorization: "Bearer <YOUR_SECRET_KEY_HERE>",
+    "Content-Type": "application/json",
   },
-  body: '{"name":"Super Product"}'
+  body: '{"name":"Super Product"}',
 };
 
-fetch('https://pay.chargily.net/test/api/v2/products', options)
-  .then(response => response.json())
-  .then(response => console.log(response))
-  .catch(err => console.error(err));
+fetch("https://pay.chargily.net/test/api/v2/products", options)
+  .then((response) => response.json())
+  .then((response) => console.log(response))
+  .catch((err) => console.error(err));
 ```
 
 ```php PHP
@@ -138,17 +141,18 @@ If everything worked, you should get a response like this:
 
 ```json json
 {
-    "id": "01hhyjnrdbc1xhgmd34hs1v3en",
-    "entity": "product",
-    "livemode": false,
-    "name": "Super Product",
-    "description": null,
-    "images": [],
-    "metadata": [],
-    "created_at": 1702907011,
-    "updated_at": 1702911993
+  "id": "01hhyjnrdbc1xhgmd34hs1v3en",
+  "entity": "product",
+  "livemode": false,
+  "name": "Super Product",
+  "description": null,
+  "images": [],
+  "metadata": [],
+  "created_at": 1702907011,
+  "updated_at": 1702911993
 }
 ```
+
 Which is the [Product](/pay-v2/api-reference/products/product-object "Product") object you just created.
 
 Good job!
@@ -157,6 +161,10 @@ Good job!
 
 Next, you'll create a [Price](/pay-v2/api-reference/prices/price-object "Price") for this product.
 
-<Card title="Create a price" icon="money-bill-1-wave" href="/pay-v2/the-full-guide/create-a-price">
+<Card
+  title="Create a price"
+  icon="money-bill-1-wave"
+  href="/pay-v2/the-full-guide/create-a-price"
+>
   Let's now create a Price for the Product you just created.
 </Card>

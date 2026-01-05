@@ -1,7 +1,7 @@
 ---
 title: "Create a checkout"
 description: "Create a Checkout by providing an amount and get the payment link."
-og:title: Create a checkout | Chargily Pay API | Chargily for Developers
+og:title: Create a checkout | Chargily Pay API - Edahabia API - Satim CIB Web API | Chargily for Developers
 ---
 
 ## Create a Checkout
@@ -9,8 +9,8 @@ og:title: Create a checkout | Chargily Pay API | Chargily for Developers
 <Note>Don't forget to replace `<YOUR_SECRET_KEY_HERE>` with your [API Secret Key](/pay-v2/api-keys "API Secret Key")</Note>
 
 <Tip>
-   For more details about the Checkout Create endpoint, refer to its [API
-   Reference.](/pay-v2/api-reference/checkouts/create "API Reference.")
+  For more details about the Checkout Create endpoint, refer to its [API
+  Reference.](/pay-v2/api-reference/checkouts/create "API Reference.")
 </Tip>
 
 <CodeGroup>
@@ -49,18 +49,18 @@ print(response.text)
 
 ```javascript JavaScript
 const options = {
-  method: 'POST',
+  method: "POST",
   headers: {
-    Authorization: 'Bearer <YOUR_SECRET_KEY_HERE>',
-    'Content-Type': 'application/json'
+    Authorization: "Bearer <YOUR_SECRET_KEY_HERE>",
+    "Content-Type": "application/json",
   },
-  body: '{"amount":2000,"currency":"dzd","success_url":"https://your-cool-website.com/payments/success"}'
+  body: '{"amount":2000,"currency":"dzd","success_url":"https://your-cool-website.com/payments/success"}',
 };
 
-fetch('https://pay.chargily.net/test/api/v2/checkouts', options)
-  .then(response => response.json())
-  .then(response => console.log(response))
-  .catch(err => console.error(err));
+fetch("https://pay.chargily.net/test/api/v2/checkouts", options)
+  .then((response) => response.json())
+  .then((response) => console.log(response))
+  .catch((err) => console.error(err));
 ```
 
 ```php PHP
@@ -143,33 +143,33 @@ If everything worked, you should get a response like this:
 
 ```json json
 {
-   "id": "01hj5n7cqpaf0mt2d0xx85tgz8",
-   "entity": "checkout",
-   "livemode": false,
-   "amount": 2000,
-   "currency": "dzd",
-   "fees": 0,
-   "fees_on_merchant": 0,
-   "fees_on_customer": 0,
-   "pass_fees_to_customer": null,
-   "chargily_pay_fees_allocation": "customer",
-   "status": "pending",
-   "locale": "ar",
-   "description": null,
-   "metadata": null,
-   "success_url": "https://your-cool-website.com/payments/success",
-   "failure_url": null,
-   "payment_method": null,
-   "invoice_id": null,
-   "customer_id": "01hj150206g0jxnh5r2yvvdrna",
-   "payment_link_id": null,
-   "created_at": 1703144567,
-   "updated_at": 1703144567,
-   "shipping_address": null,
-   "collect_shipping_address": 0,
-   "discount": null,
-   "amount_without_discount": null,
-   "checkout_url": "https://pay.chargily.dz/test/checkouts/01hj5n7cqpaf0mt2d0xx85tgz8/pay"
+  "id": "01hj5n7cqpaf0mt2d0xx85tgz8",
+  "entity": "checkout",
+  "livemode": false,
+  "amount": 2000,
+  "currency": "dzd",
+  "fees": 0,
+  "fees_on_merchant": 0,
+  "fees_on_customer": 0,
+  "pass_fees_to_customer": null,
+  "chargily_pay_fees_allocation": "customer",
+  "status": "pending",
+  "locale": "ar",
+  "description": null,
+  "metadata": null,
+  "success_url": "https://your-cool-website.com/payments/success",
+  "failure_url": null,
+  "payment_method": null,
+  "invoice_id": null,
+  "customer_id": "01hj150206g0jxnh5r2yvvdrna",
+  "payment_link_id": null,
+  "created_at": 1703144567,
+  "updated_at": 1703144567,
+  "shipping_address": null,
+  "collect_shipping_address": 0,
+  "discount": null,
+  "amount_without_discount": null,
+  "checkout_url": "https://pay.chargily.dz/test/checkouts/01hj5n7cqpaf0mt2d0xx85tgz8/pay"
 }
 ```
 
@@ -190,5 +190,5 @@ Now, when your customer goes to the payment link and successfully pays, how can 
 You will see now how to make your website or application react to a successful payment using [Webhooks](/pay-v2/webhooks "Webhooks").
 
 <Card title="Receive webhooks" icon="link" href="/pay-v2/handle-webhooks">
-   You can now create a Checkout using the Price you just created.
+  You can now create a Checkout using the Price you just created.
 </Card>

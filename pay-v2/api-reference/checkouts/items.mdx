@@ -2,20 +2,20 @@
 title: "Retrieve a checkout's items"
 description: "Retrieves all the items of a checkout."
 api: "GET /checkouts/{id}/items"
-og:title: Retrieve a checkout's items | Chargily Pay API | Chargily for Developers
+og:title: Retrieve a checkout's items | Chargily Pay API - Edahabia API - Satim CIB Web API | Chargily for Developers
 ---
 
 ## Path parameters
 
 <ParamField path="id" type="string">
-   The ID of the checkout.
+  The ID of the checkout.
 </ParamField>
 
 ## Query parameters
 
 <ParamField query="per_page" type="integer">
-   A numeric value indicating the quantity of checkouts to be returned with
-   the request, with a minimum value of 1 and a maximum value of 50.
+  A numeric value indicating the quantity of checkouts to be returned with the
+  request, with a minimum value of 1 and a maximum value of 50.
 </ParamField>
 
 ## Returns
@@ -26,8 +26,8 @@ A key-value array, containing a data property which is an array of all the items
 
 ```json Response
 {
-   "livemode": false,
-   "current_page": 1,
+  "livemode": false,
+  "current_page": 1,
   "data": [
     {
       "id": "01hhhtkgqfqq3azf2dag3qv0eh",
@@ -62,4 +62,5 @@ A key-value array, containing a data property which is an array of all the items
   "total": 2
 }
 ```
+
 </ResponseExample>

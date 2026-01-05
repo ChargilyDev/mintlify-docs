@@ -1,6 +1,6 @@
 ---
-title: 'Authentication'
-og:title: Authentication | Chargily Pay API | Chargily for Developers
+title: "Authentication"
+og:title: Authentication | Chargily Pay API - Edahabia API - Satim CIB Web API | Chargily for Developers
 ---
 
 The Chargily Pay API uses API keys for request authentication. You can access and manage your API keys on [the Developers Corner page in the Chargily Pay Dashboard](http://pay.chargily.com/dashboard/developers-corner "the Developers Corner in the Chargily Pay Dashboard").
@@ -8,10 +8,14 @@ The Chargily Pay API uses API keys for request authentication. You can access an
 The secret key should be sent within an Authorization Bearer Header for each request.
 
 <ParamField header="Authorization" type="string" required>
-  Authorization header in the format of `Bearer [token]`, with `[token]` representing your API Secret Key.
-  Example: `Bearer test_sk_Fje5EhFwyGTGqk4xxxxxxxxxxxxxxxxxxxxxxxxx`
+  Authorization header in the format of `Bearer [token]`, with `[token]`
+  representing your API Secret Key. Example: `Bearer
+  test_sk_Fje5EhFwyGTGqk4xxxxxxxxxxxxxxxxxxxxxxxxx`
 </ParamField>
 
-<Note>Requests made over plain HTTP (non HTTPS) and authentication-less (without providing an API key) will result in failure.</Note>
+<Note>
+  Requests made over plain HTTP (non HTTPS) and authentication-less (without
+  providing an API key) will result in failure.
+</Note>
 
 <Snippet file="api-secret-key-warning.mdx" />

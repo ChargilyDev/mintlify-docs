@@ -2,7 +2,7 @@
 title: "Create a checkout"
 description: "Creates a new checkout."
 api: "POST /checkouts"
-og:title: Create a checkout | Chargily Pay API | Chargily for Developers
+og:title: Create a checkout | Chargily Pay API - Edahabia API - Satim CIB Web API | Chargily for Developers
 ---
 
 ## Body parameters
@@ -27,16 +27,16 @@ The items are the products that are being sold.
 <ParamField body="amount" type="integer">
    **Required if the parameter `items` is not provided.**
 
-   The total amount of the checkout.
+The total amount of the checkout.
 
 </ParamField>
 
 <ParamField body="currency" type="string">
   **Required if the parameter `amount` is provided.**
 
-   A lowercase [ISO currency
-   code](https://www.iso.org/iso-4217-currency-codes.html "ISO currency code").
-   Currently supported currencies are: "dzd".
+A lowercase [ISO currency
+code](https://www.iso.org/iso-4217-currency-codes.html "ISO currency code").
+Currently supported currencies are: "dzd".
 
 </ParamField>
 
@@ -44,75 +44,80 @@ The items are the products that are being sold.
    The payment method that will be used to pay the checkout. Currently supported
    payment methods are: "edahabia", "cib" and "chargily_app". The customer can always change the payment method at the checkout page.
 
-   **When the payment method is "chargily_app", a "qr_code_url" param will be returned in the response.**
+**When the payment method is "chargily_app", a "qr_code_url" param will be returned in the response.**
+
 </ParamField>
 
 <ParamField body="success_url" type="string" required>
-   The URL where your customer will be redirected after a successful payment.
+  The URL where your customer will be redirected after a successful payment.
 </ParamField>
 
 <ParamField body="customer_id" type="string">
-   The ID of an existing [Customer](/v2/api-reference/customers/customer-object
-   "Customer").
+  The ID of an existing [Customer](/v2/api-reference/customers/customer-object
+  "Customer").
 </ParamField>
 
 <ParamField body="failure_url" type="string">
-   The URL where your customer will be redirected after a failed or canceled
-   payment.
+  The URL where your customer will be redirected after a failed or canceled
+  payment.
 </ParamField>
 
 <ParamField body="webhook_endpoint" type="string">
-   The URL of your endpoint that will receive the webhook events sent by
-   Chargily Pay.
+  The URL of your endpoint that will receive the webhook events sent by Chargily
+  Pay.
 </ParamField>
 
 <ParamField body="description" type="string">
-   A description of the checkout. You can use this field to save a note about
-   the checkout.
+  A description of the checkout. You can use this field to save a note about the
+  checkout.
 </ParamField>
 
 <ParamField body="locale" type="string">
-   The language of the checkout page, accepted values are: 'ar', 'en' or 'fr'.
+  The language of the checkout page, accepted values are: 'ar', 'en' or 'fr'.
 </ParamField>
 
 <ResponseField name="pass_fees_to_customer" type="boolean">
    **DEPRECATED, use chargily_pay_fees_allocation instead.**
 
-   A Boolean value indicates whether the Chargily Pay fees will be paid by you,
-   the merchant, or your customers.
+A Boolean value indicates whether the Chargily Pay fees will be paid by you,
+the merchant, or your customers.
+
 </ResponseField>
 
 <ResponseField name="chargily_pay_fees_allocation" type="string">
    Can be one of "customer", "merchant" or "split".
 
-   Choose who is going to pay Chargily Pay fees ("Merchant" means you will pay the fees, "Customer" means the customer will pay the fees, "Split" means you will split the fees with the customer).
+Choose who is going to pay Chargily Pay fees ("Merchant" means you will pay the fees, "Customer" means the customer will pay the fees, "Split" means you will split the fees with the customer).
+
 </ResponseField>
 
 <ParamField body="shipping_address" type="string">
-   The shipping address of the customer for the checkout.
+  The shipping address of the customer for the checkout.
 </ParamField>
 
 <ParamField body="collect_shipping_address" type="boolean">
-   A Boolean value indicates whether the shipping address should be collected
-   from the customer.
+  A Boolean value indicates whether the shipping address should be collected
+  from the customer.
 </ParamField>
 
 <ParamField body="percentage_discount" type="integer">
    **Prohibited if the parameter `amount_discount` is provided.**
 
-   A percentage discount that will be applied to the total amount of the
-   checkout.
+A percentage discount that will be applied to the total amount of the
+checkout.
+
 </ParamField>
 
 <ParamField body="amount_discount" type="integer">
    **Prohibited if the parameter `percentage_discount` is provided.**
 
-   An amount discount that will be applied to the total amount of the checkout.
+An amount discount that will be applied to the total amount of the checkout.
+
 </ParamField>
 
 <ParamField body="metadata" type="array">
-   A Set of key-value pairs that can be used to store additional information
-   about the product.
+  A Set of key-value pairs that can be used to store additional information
+  about the product.
 </ParamField>
 
 ## Returns
@@ -123,37 +128,37 @@ If the request is successful, it returns a checkout object.
 
 ```json Response
 {
-   "id": "01hj5n7cqpaf0mt2d0xx85tgz8",
-   "entity": "checkout",
-   "livemode": false,
-   "amount": 2500,
-   "currency": "dzd",
-   "fees": 0,
-   "fees_on_merchant": 0,
-   "fees_on_customer": 0,
-   "pass_fees_to_customer": null,
-   "chargily_pay_fees_allocation": "customer",
-   "status": "pending",
-   "locale": "en",
-   "description": null,
-   "metadata": null,
-   "success_url": "https://my-app.com/payments/success",
-   "failure_url": "https://my-app.com/payments/failure",
-   "webhook_endpoint": null,
-   "payment_method": null,
-   "invoice_id": null,
-   "customer_id": "01hj150206g0jxnh5r2yvvdrna",
-   "payment_link_id": null,
-   "created_at": 1703144567,
-   "updated_at": 1703144567,
-   "shipping_address": null,
-   "collect_shipping_address": 0,
-   "discount": {
-        "type": "percentage",
-        "value": 50
-    },
-   "amount_without_discount": 5000,
-   "checkout_url": "https://pay.chargily.dz/test/checkouts/01hj5n7cqpaf0mt2d0xx85tgz8/pay"
+  "id": "01hj5n7cqpaf0mt2d0xx85tgz8",
+  "entity": "checkout",
+  "livemode": false,
+  "amount": 2500,
+  "currency": "dzd",
+  "fees": 0,
+  "fees_on_merchant": 0,
+  "fees_on_customer": 0,
+  "pass_fees_to_customer": null,
+  "chargily_pay_fees_allocation": "customer",
+  "status": "pending",
+  "locale": "en",
+  "description": null,
+  "metadata": null,
+  "success_url": "https://my-app.com/payments/success",
+  "failure_url": "https://my-app.com/payments/failure",
+  "webhook_endpoint": null,
+  "payment_method": null,
+  "invoice_id": null,
+  "customer_id": "01hj150206g0jxnh5r2yvvdrna",
+  "payment_link_id": null,
+  "created_at": 1703144567,
+  "updated_at": 1703144567,
+  "shipping_address": null,
+  "collect_shipping_address": 0,
+  "discount": {
+    "type": "percentage",
+    "value": 50
+  },
+  "amount_without_discount": 5000,
+  "checkout_url": "https://pay.chargily.dz/test/checkouts/01hj5n7cqpaf0mt2d0xx85tgz8/pay"
 }
 ```
 

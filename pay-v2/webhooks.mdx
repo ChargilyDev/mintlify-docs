@@ -1,7 +1,7 @@
 ---
 title: "Webhooks"
 description: "Learn how to use webhooks to make your application react to events from Chargily Pay."
-og:title: Webhooks | Chargily Pay API | Chargily for Developers
+og:title: Webhooks | Chargily Pay API - Edahabia API - Satim CIB Web API | Chargily for Developers
 ---
 
 ## What is a Webhook?
@@ -22,37 +22,37 @@ Here is an example of a webhook payload of a successfully paid checkout:
 
 ```json Event Payload Example
 {
-   "id": "01hjjjzf7wbc454te45mwx35fe",
-   "entity": "event",
-   "livemode": "false",
-   "type": "checkout.paid",
-   "data": {
-      "id": "01hjjj9aymmrwe664nbzrv84sg",
-      "entity": "checkout",
-      "fees": 1250,
-      "amount": 50000,
-      "locale": "ar",
-      "status": "paid",
-      "metadata": null,
-      "created_at": 1703577693,
-      "invoice_id": null,
-      "updated_at": 1703578418,
-      "customer_id": "01hjjjzf07chnbkcjax2vs58fv",
-      "description": null,
-      "failure_url": null,
-      "success_url": "https://your-cool-website.com/payments/success",
-      "payment_method": null,
-      "payment_link_id": null,
-      "pass_fees_to_customer": null,
-      "chargily_pay_fees_allocation": "customer",
-      "shipping_address": null,
-      "collect_shipping_address": 1,
-      "discount": null,
-      "amount_without_discount": null,
-      "url": "https://pay.chargily.dz/test/checkouts/01hjjj9aymmrwe664nbzrv84sg/pay"
-   },
-   "created_at": 1703578418,
-   "updated_at": 1703578418
+  "id": "01hjjjzf7wbc454te45mwx35fe",
+  "entity": "event",
+  "livemode": "false",
+  "type": "checkout.paid",
+  "data": {
+    "id": "01hjjj9aymmrwe664nbzrv84sg",
+    "entity": "checkout",
+    "fees": 1250,
+    "amount": 50000,
+    "locale": "ar",
+    "status": "paid",
+    "metadata": null,
+    "created_at": 1703577693,
+    "invoice_id": null,
+    "updated_at": 1703578418,
+    "customer_id": "01hjjjzf07chnbkcjax2vs58fv",
+    "description": null,
+    "failure_url": null,
+    "success_url": "https://your-cool-website.com/payments/success",
+    "payment_method": null,
+    "payment_link_id": null,
+    "pass_fees_to_customer": null,
+    "chargily_pay_fees_allocation": "customer",
+    "shipping_address": null,
+    "collect_shipping_address": 1,
+    "discount": null,
+    "amount_without_discount": null,
+    "url": "https://pay.chargily.dz/test/checkouts/01hjjj9aymmrwe664nbzrv84sg/pay"
+  },
+  "created_at": 1703578418,
+  "updated_at": 1703578418
 }
 ```
 
@@ -72,20 +72,26 @@ You need to set up an endpoint on your backend that accepts POST requests so tha
 
 <Steps>
   <Step title="Verifying the signature">
-    For security reasons, every webhook request sent to your endpoint from Chargily Pay will have a header called `signature`, which is a **HMAC** of the payload signed with your API secret key.
-    You need to verify it to make sure that the request came from us and that the payload hasn't been tampered with.
+    For security reasons, every webhook request sent to your endpoint from
+    Chargily Pay will have a header called `signature`, which is a **HMAC** of
+    the payload signed with your API secret key. You need to verify it to make
+    sure that the request came from us and that the payload hasn't been tampered
+    with.
   </Step>
   <Step title="Identify the event">
-    Each request's payload comes with a `type` key that indicates the type of event that occurred, you can use it to identify the event and take the appropriate action.
+    Each request's payload comes with a `type` key that indicates the type of
+    event that occurred, you can use it to identify the event and take the
+    appropriate action.
   </Step>
   <Step title="Handle the event">
-    Once you've identified the event, you can handle it by executing the necessary actions.
+    Once you've identified the event, you can handle it by executing the
+    necessary actions.
   </Step>
   <Step title="Respond with a 200 response">
-    After you've handled the event, you need to respond with a 200 response to let us know that you've received the webhook.
+    After you've handled the event, you need to respond with a 200 response to
+    let us know that you've received the webhook.
   </Step>
 </Steps>
-
 
 ### Example endpoint
 
@@ -140,60 +146,61 @@ def webhook(request):
 ```
 
 ```javascript javaScript
-const express = require('express');
-const crypto = require('crypto');
+const express = require("express");
+const crypto = require("crypto");
 
 const app = express();
 const port = 3000;
 
 // Your Chargily Pay Secret key, will be used to calculate the Signature
-const apiSecretKey = 'test_sk_Fje5EhFwyGTGqk4M6et3Jxxxxxxxxxxxxxxxxxxxx';
+const apiSecretKey = "test_sk_Fje5EhFwyGTGqk4M6et3Jxxxxxxxxxxxxxxxxxxxx";
 
 app.use(express.json());
 
-app.post('/webhook', (req, res) => {
-    // Extracting the 'signature' header from the HTTP request
-    const signature = req.get('signature');
+app.post("/webhook", (req, res) => {
+  // Extracting the 'signature' header from the HTTP request
+  const signature = req.get("signature");
 
-    // Getting the raw payload from the request body
-    const payload = JSON.stringify(req.body);
+  // Getting the raw payload from the request body
+  const payload = JSON.stringify(req.body);
 
-    // If there is no signature, ignore the request
-    if (!signature) {
-        return res.sendStatus(400);
-    }
+  // If there is no signature, ignore the request
+  if (!signature) {
+    return res.sendStatus(400);
+  }
 
-    // Calculate the signature
-    const computedSignature = crypto.createHmac('sha256', apiSecretKey)
-        .update(payload)
-        .digest('hex');
+  // Calculate the signature
+  const computedSignature = crypto
+    .createHmac("sha256", apiSecretKey)
+    .update(payload)
+    .digest("hex");
 
-    // If the calculated signature doesn't match the received signature, ignore the request
-    if (computedSignature !== signature) {
-        return res.sendStatus(403);
-    }
+  // If the calculated signature doesn't match the received signature, ignore the request
+  if (computedSignature !== signature) {
+    return res.sendStatus(403);
+  }
 
-    // If the signatures match, proceed to decode the JSON payload
-    const event = req.body;
+  // If the signatures match, proceed to decode the JSON payload
+  const event = req.body;
 
-    // Switch based on the event type
-    switch (event.type) {
-        case 'checkout.paid':
-            const checkout = event.data;
-            // Handle the successful payment.
-            break;
-        case 'checkout.failed':
-            const failedCheckout = event.data;
-            // Handle the failed payment.
-            break;
-    }
+  // Switch based on the event type
+  switch (event.type) {
+    case "checkout.paid":
+      const checkout = event.data;
+      // Handle the successful payment.
+      break;
+    case "checkout.failed":
+      const failedCheckout = event.data;
+      // Handle the failed payment.
+      break;
+  }
 
-    // Respond with a 200 OK status code to let us know that you've received the webhook
-    res.sendStatus(200);
+  // Respond with a 200 OK status code to let us know that you've received the webhook
+  res.sendStatus(200);
 });
 
 app.listen(port, () => {
-    console.log(`Server is running at http://localhost:${port}`);
+  console.log(`Server is running at http://localhost:${port}`);
 });
 ```
 

@@ -1,34 +1,34 @@
 ---
 title: "The Customer object"
 description: "This represents a customer of your business."
-og:title: The Customer object | Chargily Pay API | Chargily for Developers
+og:title: The Customer object | Chargily Pay API - Edahabia API - Satim CIB Web API | Chargily for Developers
 ---
 
 ## Attributes
 
 <ResponseField name="id" type="string">
-   The unique identifier of the customer.
+  The unique identifier of the customer.
 </ResponseField>
 
 <ResponseField name="entity" type="string">
-   A String representing the type of the object.
+  A String representing the type of the object.
 </ResponseField>
 
 <ResponseField name="livemode" type="boolean">
-   A "True" value means the request was made in Live Mode, while "False"
-   indicates Test Mode.
+  A "True" value means the request was made in Live Mode, while "False"
+  indicates Test Mode.
 </ResponseField>
 
 <ResponseField name="name" type="string">
-   A String representing the name of the customer.
+  A String representing the name of the customer.
 </ResponseField>
 
 <ResponseField name="email" type="nullable, string">
-   The email of the customer.
+  The email of the customer.
 </ResponseField>
 
 <ResponseField name="phone" type="nullable, string">
-   The hone number of the customer.
+  The hone number of the customer.
 </ResponseField>
 
 <ResponseField name="address" type="nullable, object">
@@ -46,40 +46,41 @@ The address of the customer
     <ResponseField name="address.address" type="string">
       The address line of the customer.
     </ResponseField>
+
 </Expandable>
 </ResponseField>
 
 <ResponseField name="metadata" type="dictionary">
-   A Set of key-value pairs that can be used to store additional information
-   about the customer.
+  A Set of key-value pairs that can be used to store additional information
+  about the customer.
 </ResponseField>
 
 <ResponseField name="created_at" type="timestamp">
-   Timestamp indicating when the customer was created.
+  Timestamp indicating when the customer was created.
 </ResponseField>
 
 <ResponseField name="updated_at" type="timestamp">
-   Timestamp indicating when the last time the customer was updated (edited).
+  Timestamp indicating when the last time the customer was updated (edited).
 </ResponseField>
 
 <ResponseExample>
 
 ```json The Customer Object
 {
-   "id": "01hj0p5s3ygy2mx1czg2wzcc4x",
-   "entity": "customer",
-   "livemode": false,
-   "name": "Hocine Saad",
-   "email": null,
-   "phone": null,
-   "address": {
-      "country": "Algeria",
-      "state": "Tizi-Ouzou",
-      "address": "123 Main Street"
-   },
-   "metadata": null,
-   "created_at": 1702977791,
-   "updated_at": 1702977791
+  "id": "01hj0p5s3ygy2mx1czg2wzcc4x",
+  "entity": "customer",
+  "livemode": false,
+  "name": "Hocine Saad",
+  "email": null,
+  "phone": null,
+  "address": {
+    "country": "Algeria",
+    "state": "Tizi-Ouzou",
+    "address": "123 Main Street"
+  },
+  "metadata": null,
+  "created_at": 1702977791,
+  "updated_at": 1702977791
 }
 ```
 

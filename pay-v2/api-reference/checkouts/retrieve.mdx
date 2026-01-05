@@ -2,13 +2,13 @@
 title: "Retrieve a checkout"
 description: "Retrieves all the information of an already-existing checkout by providing it's unique identifier (ID)."
 api: "GET /checkouts/{id}"
-og:title: Retrieve a checkout | Chargily Pay API | Chargily for Developers
+og:title: Retrieve a checkout | Chargily Pay API - Edahabia API - Satim CIB Web API | Chargily for Developers
 ---
 
 ## Path parameters
 
 <ParamField path="id" type="string">
-   The ID of the checkout.
+  The ID of the checkout.
 </ParamField>
 
 ## Returns
@@ -19,37 +19,37 @@ If a valid ID is provided, it returns a checkout object.
 
 ```json Response
 {
-   "id": "01hj5n7cqpaf0mt2d0xx85tgz8",
-   "entity": "checkout",
-   "livemode": false,
-   "amount": 2500,
-   "currency": "dzd",
-   "fees": 0,
-   "fees_on_merchant": 0,
-   "fees_on_customer": 0,
-   "pass_fees_to_customer": null,
-   "chargily_pay_fees_allocation": "customer",
-   "status": "pending",
-   "locale": "en",
-   "description": null,
-   "metadata": null,
-   "success_url": "https://my-app.com/payments/success",
-   "failure_url": "https://my-app.com/payments/failure",
-   "webhook_endpoint": null,
-   "payment_method": null,
-   "invoice_id": null,
-   "customer_id": "01hj150206g0jxnh5r2yvvdrna",
-   "payment_link_id": null,
-   "created_at": 1703144567,
-   "updated_at": 1703144567,
-   "shipping_address": null,
-   "collect_shipping_address": 0,
-   "discount": {
-            "type": "percentage",
-            "value": 50
-         },
-   "amount_without_discount": 5000,
-   "checkout_url": "https://pay.chargily.dz/test/checkouts/01hj5n7cqpaf0mt2d0xx85tgz8/pay"
+  "id": "01hj5n7cqpaf0mt2d0xx85tgz8",
+  "entity": "checkout",
+  "livemode": false,
+  "amount": 2500,
+  "currency": "dzd",
+  "fees": 0,
+  "fees_on_merchant": 0,
+  "fees_on_customer": 0,
+  "pass_fees_to_customer": null,
+  "chargily_pay_fees_allocation": "customer",
+  "status": "pending",
+  "locale": "en",
+  "description": null,
+  "metadata": null,
+  "success_url": "https://my-app.com/payments/success",
+  "failure_url": "https://my-app.com/payments/failure",
+  "webhook_endpoint": null,
+  "payment_method": null,
+  "invoice_id": null,
+  "customer_id": "01hj150206g0jxnh5r2yvvdrna",
+  "payment_link_id": null,
+  "created_at": 1703144567,
+  "updated_at": 1703144567,
+  "shipping_address": null,
+  "collect_shipping_address": 0,
+  "discount": {
+    "type": "percentage",
+    "value": 50
+  },
+  "amount_without_discount": 5000,
+  "checkout_url": "https://pay.chargily.dz/test/checkouts/01hj5n7cqpaf0mt2d0xx85tgz8/pay"
 }
 ```
 

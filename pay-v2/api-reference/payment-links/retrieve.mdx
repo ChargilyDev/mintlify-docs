@@ -2,13 +2,13 @@
 title: "Retrieve a payment link"
 description: "Retrieves all the information of an already-existing payment link by providing it's unique identifier (ID)."
 api: "GET /payment-links/{id}"
-og:title: Retrieve a payment link | Chargily Pay API | Chargily for Developers
+og:title: Retrieve a payment link | Chargily Pay API - Edahabia API - Satim CIB Web API | Chargily for Developers
 ---
 
 ## Path parameters
 
 <ParamField path="id" type="string">
-   The ID of the payment link.
+  The ID of the payment link.
 </ParamField>
 
 ## Returns
@@ -19,19 +19,19 @@ If a valid ID is provided, it returns a payment link object.
 
 ```json Response
 {
-   "id": "01hhhtvg4w7gk4mcaxmgzb2ynw",
-   "entity": "payment_link",
-   "livemode": false,
-   "name": "Payment Link for Facebook page.",
-   "active": 1,
-   "after_completion_message": "The product will arrive in 03 days.",
-   "locale": "ar",
-   "pass_fees_to_customer": false,
-   "metadata": [],
-   "created_at": 1702479380,
-   "updated_at": 1702479380,
-   "collect_shipping_address": 0,
-   "url": "https://pay.chargily.dz/test/payment-links/01hhhtvg4w7gk4mfg5fdgmgzb2ynw"
+  "id": "01hhhtvg4w7gk4mcaxmgzb2ynw",
+  "entity": "payment_link",
+  "livemode": false,
+  "name": "Payment Link for Facebook page.",
+  "active": 1,
+  "after_completion_message": "The product will arrive in 03 days.",
+  "locale": "ar",
+  "pass_fees_to_customer": false,
+  "metadata": [],
+  "created_at": 1702479380,
+  "updated_at": 1702479380,
+  "collect_shipping_address": 0,
+  "url": "https://pay.chargily.dz/test/payment-links/01hhhtvg4w7gk4mfg5fdgmgzb2ynw"
 }
 ```
 

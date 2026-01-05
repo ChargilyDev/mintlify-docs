@@ -2,14 +2,14 @@
 title: "List all products"
 description: "Returns a list of all your products."
 api: "GET /products"
-og:title: List all products | Chargily Pay API | Chargily for Developers
+og:title: List all products | Chargily Pay API - Edahabia API - Satim CIB Web API | Chargily for Developers
 ---
 
 ## Query parameters
 
 <ParamField query="per_page" type="integer">
-   A numeric value indicating the quantity of products to be returned with the
-   request, with a minimum value of 1 and a maximum value of 50.
+  A numeric value indicating the quantity of products to be returned with the
+  request, with a minimum value of 1 and a maximum value of 50.
 </ParamField>
 
 ## Returns
@@ -20,38 +20,38 @@ A key-value array, containing a data property which is an array of products, lim
 
 ```json Response
 {
-   "livemode": false,
-   "current_page": 1,
-   "data": [
-      {
-         "id": "01hhyre3ng8r8m80c4m90p0zdn",
-         "entity": "product",
-         "name": "Super Product",
-         "description": null,
-         "images": [],
-         "metadata": [],
-         "created_at": 1702913052,
-         "updated_at": 1702913052
-      },
-      {
-         "id": "01hhyqvh7as945t3ra6tjn0fzx",
-         "entity": "product",
-         "name": "Awsome Product",
-         "description": null,
-         "images": [],
-         "metadata": [],
-         "created_at": 1702912443,
-         "updated_at": 1702912443
-      }
-   ],
-   "first_page_url": "https://pay.chargily.net/test/api/v2/products?page=1",
-   "last_page": 4,
-   "last_page_url": "https://pay.chargily.net/test/api/v2/products?page=4",
-   "next_page_url": "https://pay.chargily.net/test/api/v2/products?page=2",
-   "path": "https://pay.chargily.net/test/api/v2/products",
-   "per_page": 2,
-   "prev_page_url": null,
-   "total": 7
+  "livemode": false,
+  "current_page": 1,
+  "data": [
+    {
+      "id": "01hhyre3ng8r8m80c4m90p0zdn",
+      "entity": "product",
+      "name": "Super Product",
+      "description": null,
+      "images": [],
+      "metadata": [],
+      "created_at": 1702913052,
+      "updated_at": 1702913052
+    },
+    {
+      "id": "01hhyqvh7as945t3ra6tjn0fzx",
+      "entity": "product",
+      "name": "Awsome Product",
+      "description": null,
+      "images": [],
+      "metadata": [],
+      "created_at": 1702912443,
+      "updated_at": 1702912443
+    }
+  ],
+  "first_page_url": "https://pay.chargily.net/test/api/v2/products?page=1",
+  "last_page": 4,
+  "last_page_url": "https://pay.chargily.net/test/api/v2/products?page=4",
+  "next_page_url": "https://pay.chargily.net/test/api/v2/products?page=2",
+  "path": "https://pay.chargily.net/test/api/v2/products",
+  "per_page": 2,
+  "prev_page_url": null,
+  "total": 7
 }
 ```
 
