@@ -608,8 +608,7 @@ GET /api/voucher/categories/{name_or_id}
 
 **Response** (200 OK):
 ```json
-{
-  "cards": [
+[
     {
       "id": 1,
       "name": "Google Play 1000 DZD",
@@ -624,8 +623,7 @@ GET /api/voucher/categories/{name_or_id}
       "category_image": "https://storage.pro.chargily.net/categories/gaming.png",
       "out_of_stock": false
     }
-  ]
-}
+]
 ```
 
 **Response** (404 Not Found):
@@ -661,7 +659,8 @@ Content-Type: application/json
   "voucher_name": "Google Play 1000 DZD",
   "value": "1000",
   "customer_name": "Ahmed Benali",
-  "request_number": "VCHR-2024-001"
+  "request_number": "VCHR-2024-001",
+  "country_code": "dz"
 }
 ```
 
@@ -671,6 +670,7 @@ Content-Type: application/json
 - `value`: Required, string (face value)
 - `customer_name`: Required, string
 - `request_number`: Required, unique identifier
+- `country_code`: Required, string
 
 **Response** (201 Created):
 ```json
